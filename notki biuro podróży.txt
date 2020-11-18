@@ -1,0 +1,21 @@
+Projekt sklepu internetowego:
+
+Admin:
+Dodawanie kategorii dla produktów.
+Przegląd drzewa kategorii.
+Dodawanie produktów.
+Lista produktów + edycja.
+Użytkownik:
+Rejestracja.
+Lista produktów.
+Tabela produktów z paginacją.
+
+
+Rozszerzenie:
+- logowanie z wykorzystaniem konta googlowego lub facebookowego
+- Oceny produktów i komentarze wg projektu Serwis z poradami. 
+- konto użytkownika może mieć przypisany awatar
+- Wyświetlanie pogody dla miasta użytkownika.
+- możliwość zakupu w innej walucie.
+- API dla innych stron/serwisów, chcących prezentować wydarzenia.
+- sortowanie i paginacja.
