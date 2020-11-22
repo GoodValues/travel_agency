@@ -1,5 +1,6 @@
 package com.travel_agency.model.trip;
 
+import com.travel_agency.model.destination.Destination;
 import com.travel_agency.model.user.User;
 
 import javax.persistence.*;
@@ -26,6 +27,8 @@ public class Trip {
     private String pictureUrl;
     private TripStatusEnum status;
     private Integer peopleLimit;
+    @OneToOne
+    private Destination destination;
     @ManyToMany// joinColumns, fetching, kaskady po zrobieniu User
     private List<User> users = new ArrayList<>();
 
@@ -34,7 +37,8 @@ public class Trip {
 
     public Trip(Long id, LocalDateTime dateFrom, LocalDateTime dateTo, Duration duration,
                 BigDecimal priceForAdult, BigDecimal priceForChild, TripTypeEnum tripType,
-                String description, String pictureUrl, TripStatusEnum status, Integer peopleLimit, List<User> users) {
+                String description, String pictureUrl, TripStatusEnum status, Integer peopleLimit,
+                Destination destination, List<User> users) {
         this.id = id;
         this.dateFrom = dateFrom;
         this.dateTo = dateTo;
@@ -46,6 +50,7 @@ public class Trip {
         this.pictureUrl = pictureUrl;
         this.status = status;
         this.peopleLimit = peopleLimit;
+        this.destination = destination;
         this.users = users;
     }
 
@@ -145,6 +150,14 @@ public class Trip {
         this.users = users;
     }
 
+    public Destination getDestination() {
+        return destination;
+    }
+
+    public void setDestination(Destination destination) {
+        this.destination = destination;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -161,11 +174,12 @@ public class Trip {
                 Objects.equals(pictureUrl, trip.pictureUrl) &&
                 status == trip.status &&
                 Objects.equals(peopleLimit, trip.peopleLimit) &&
+                Objects.equals(destination, trip.destination) &&
                 Objects.equals(users, trip.users);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, dateFrom, dateTo, duration, priceForAdult, priceForChild, tripType, description, pictureUrl, status, peopleLimit, users);
+        return Objects.hash(id, dateFrom, dateTo, duration, priceForAdult, priceForChild, tripType, description, pictureUrl, status, peopleLimit, destination, users);
     }
 }

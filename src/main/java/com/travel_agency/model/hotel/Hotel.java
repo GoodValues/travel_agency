@@ -1,6 +1,6 @@
 package com.travel_agency.model.hotel;
 
-import com.travel_agency.model.city.City;
+import com.travel_agency.model.destination.Destination;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,17 +18,17 @@ public class Hotel {
     private HotelStandardEnum standard;
     private String description;
     @ManyToOne//joiny itp do dopracowania po zrobieniu klasy CIty
-    private City city;
+    private Destination destionation;
 
     public Hotel() {
     }
 
-    public Hotel(Long id, String name, HotelStandardEnum standard, String description, City city) {
+    public Hotel(Long id, String name, HotelStandardEnum standard, String description, Destination destionation) {
         this.id = id;
         this.name = name;
         this.standard = standard;
         this.description = description;
-        this.city = city;
+        this.destionation = destionation;
     }
 
     public Long getId() {
@@ -63,12 +63,12 @@ public class Hotel {
         this.description = description;
     }
 
-    public City getCity() {
-        return city;
+    public Destination getDestionation() {
+        return destionation;
     }
 
-    public void setCity(City city) {
-        this.city = city;
+    public void setDestionation(Destination destionation) {
+        this.destionation = destionation;
     }
 
     @Override
@@ -80,11 +80,11 @@ public class Hotel {
                 Objects.equals(name, hotel.name) &&
                 standard == hotel.standard &&
                 Objects.equals(description, hotel.description) &&
-                Objects.equals(city, hotel.city);
+                Objects.equals(destionation, hotel.destionation);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, standard, description, city);
+        return Objects.hash(id, name, standard, description, destionation);
     }
 }
