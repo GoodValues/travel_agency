@@ -1,6 +1,6 @@
 package com.travel_agency.model.trip;
 
-import com.travel_agency.model.User;
+import com.travel_agency.model.user.User;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
