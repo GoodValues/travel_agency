@@ -1,6 +1,6 @@
 package com.travel_agency.model.trip;
 
-public enum AlimentationEnum {
+public enum TripAlimentationEnum {
     AI("All inclusive"),
     BB("Bed and Breakfast"),
     HB("Half Board"),
@@ -10,10 +10,10 @@ public enum AlimentationEnum {
 
     String description;
 
-    AlimentationEnum() {
+    TripAlimentationEnum() {
     }
 
-    AlimentationEnum(String description) {
+    TripAlimentationEnum(String description) {
         this.description = description;
     }
 }
