@@ -19,3 +19,4 @@ Rozszerzenie:
 - możliwość zakupu w innej walucie.
 - API dla innych stron/serwisów, chcących prezentować wydarzenia.
 - sortowanie i paginacja.
+- statystyki - np. najchętniej odwiedzane miejsca.
