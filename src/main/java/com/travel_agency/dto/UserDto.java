@@ -1,29 +1,24 @@
-package com.travel_agency.model.user;
+package com.travel_agency.dto;
 
-import com.travel_agency.model.Address;
 import com.travel_agency.model.trip.Trip;
+import com.travel_agency.model.user.UserRoleNameEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
-public class User {
+public class UserDto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String firstName;
     private String lastName;
@@ -32,7 +27,4 @@ public class User {
     private String password;
     private UserRoleNameEnum roleName;
     private List<Trip> trips = new ArrayList<>();
-
-//    @JoinColumn(name="address_id")  ???? do wyjasnienia
-//    private Address address;
 }
