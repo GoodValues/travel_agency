@@ -24,7 +24,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
-public class TripDto {
+public class TripDTO {
 
     private Long id;
     private LocalDateTime dateFrom;
