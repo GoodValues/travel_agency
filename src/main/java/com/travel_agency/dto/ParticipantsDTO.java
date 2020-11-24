@@ -7,24 +7,19 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.util.ArrayList;
-import java.util.List;
+import java.time.LocalDate;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
-public class UserDto {
+public class ParticipantsDTO {
 
     private Long id;
     private String firstName;
     private String lastName;
     private String address;
     private String email;
-    private String password;
-    private UserRoleNameEnum roleName;
-    private List<Trip> trips = new ArrayList<>();
+    private long pesel;
+    private LocalDate dateOfBirth;
 }
