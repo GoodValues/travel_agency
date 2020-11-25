@@ -17,6 +17,7 @@ import java.util.Objects;
 @NoArgsConstructor
 @EqualsAndHashCode
 @Data
+@Table(name = "destination")
 public class Destination {
 
     @Id
@@ -26,9 +27,9 @@ public class Destination {
     private String countryName;
     private String cityName;
     private String airportName;
-    @OneToMany//do dopracowania
-    private List<Hotel> hotels;
-    @ManyToMany//do dopracowania
+    @OneToMany(mappedBy = "destination")
+    private List<Hotel> hotels= new ArrayList<>();
+    @OneToMany(mappedBy = "destination")
     private List<Trip> trips = new ArrayList<>();
 
 

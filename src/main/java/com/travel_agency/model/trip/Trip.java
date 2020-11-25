@@ -1,6 +1,7 @@
 package com.travel_agency.model.trip;
 
 import com.travel_agency.model.destination.Destination;
+import com.travel_agency.model.hotel.Hotel;
 import com.travel_agency.model.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -56,7 +57,8 @@ public class Trip {
     private TripStatusEnum status;
     private Integer peopleLimit;
 
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name ="destination_id")
     private Destination destination;
 
     @ManyToMany(fetch = FetchType.LAZY,
@@ -67,5 +69,12 @@ public class Trip {
             joinColumns = @JoinColumn(name = "trip_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id"))
     private List<User> users = new ArrayList<>();
+
+    @ManyToMany(fetch = FetchType.EAGER,
+            cascade = {CascadeType.ALL})
+    @JoinTable(name = "hotel_trip",
+            joinColumns = @JoinColumn(name = "trip_id"),
+            inverseJoinColumns = @JoinColumn(name = "hotel_id"))
+    private List<Hotel> hotels = new ArrayList<>();
 
 }
