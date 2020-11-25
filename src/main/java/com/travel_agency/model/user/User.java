@@ -1,6 +1,6 @@
 package com.travel_agency.model.user;
 
-import com.travel_agency.model.Address;
+import com.travel_agency.model.address.Address;
 import com.travel_agency.model.reservation.Reservation;
 import com.travel_agency.model.trip.Trip;
 import lombok.AllArgsConstructor;
