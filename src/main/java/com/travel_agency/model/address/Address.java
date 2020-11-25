@@ -1,4 +1,4 @@
-package com.travel_agency.model;
+package com.travel_agency.model.address;
 
 import com.travel_agency.model.user.User;
 import lombok.AllArgsConstructor;
@@ -6,12 +6,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 
 @Entity
@@ -19,6 +14,7 @@ import javax.validation.constraints.NotEmpty;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
+@Table(name="address")
 public class Address {
 
     @Id
@@ -28,6 +24,7 @@ public class Address {
     @NotEmpty
     private String road;
 
+    @NotEmpty
     private Long roadNumber;
 
     @NotEmpty

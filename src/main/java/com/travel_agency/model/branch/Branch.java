@@ -1,4 +1,4 @@
-package com.travel_agency.model;
+package com.travel_agency.model.branch;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

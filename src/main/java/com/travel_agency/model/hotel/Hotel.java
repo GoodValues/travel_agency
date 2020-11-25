@@ -7,6 +7,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -22,12 +23,15 @@ public class Hotel {
     @Id
     @GeneratedValue
     private Long id;
+    @NotEmpty
+    @Column(nullable = false)
     private String name;
     @Enumerated(EnumType.STRING)
     private HotelStandardEnum standard;
+    private String location;
     private String description;
-    @ManyToOne
-    @JoinColumn(name="destination_id")
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name="destination_hotel_id")
     private Destination destionation;
     @ManyToMany(fetch = FetchType.EAGER,
             cascade = {CascadeType.ALL})
