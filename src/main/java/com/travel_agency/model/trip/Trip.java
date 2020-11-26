@@ -19,15 +19,16 @@ import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 @Entity
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 @EqualsAndHashCode
+@AllArgsConstructor
 @Table(name = "trip")
 public class Trip {
+
+
+    public Trip() {
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,11 +36,11 @@ public class Trip {
 
     @NotEmpty
     @DateTimeFormat
-    private LocalDate dateFrom;
+    private LocalDateTime dateFrom;
 
     @NotEmpty
     @DateTimeFormat
-    private LocalDate dateTo;
+    private LocalDateTime dateTo;
 
     @NotEmpty
     @DurationUnit(ChronoUnit.DAYS)
@@ -63,6 +64,7 @@ public class Trip {
 
     @Enumerated(EnumType.STRING)
     private TripStatusEnum status;
+
     private Integer peopleLimit;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -84,4 +86,115 @@ public class Trip {
             inverseJoinColumns = @JoinColumn(name = "hotel_id"))
     private List<Hotel> hotels = new ArrayList<>();
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public LocalDateTime getDateFrom() {
+        return dateFrom;
+    }
+
+    public void setDateFrom(LocalDateTime dateFrom) {
+        this.dateFrom = dateFrom;
+    }
+
+    public LocalDateTime getDateTo() {
+        return dateTo;
+    }
+
+    public void setDateTo(LocalDateTime dateTo) {
+        this.dateTo = dateTo;
+    }
+
+    public Duration getDuration() {
+        return duration;
+    }
+
+    public void setDuration(Duration duration) {
+        this.duration = duration;
+    }
+
+    public BigDecimal getPriceForAdult() {
+        return priceForAdult;
+    }
+
+    public void setPriceForAdult(BigDecimal priceForAdult) {
+        this.priceForAdult = priceForAdult;
+    }
+
+    public BigDecimal getPriceForChild() {
+        return priceForChild;
+    }
+
+    public void setPriceForChild(BigDecimal priceForChild) {
+        this.priceForChild = priceForChild;
+    }
+
+    public TripTypeEnum getTripType() {
+        return tripType;
+    }
+
+    public void setTripType(TripTypeEnum tripType) {
+        this.tripType = tripType;
+    }
+
+    public TripAlimentationEnum getTripAlimentationEnum() {
+        return tripAlimentationEnum;
+    }
+
+    public void setTripAlimentationEnum(TripAlimentationEnum tripAlimentationEnum) {
+        this.tripAlimentationEnum = tripAlimentationEnum;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public TripStatusEnum getStatus() {
+        return status;
+    }
+
+    public void setStatus(TripStatusEnum status) {
+        this.status = status;
+    }
+
+    public Integer getPeopleLimit() {
+        return peopleLimit;
+    }
+
+    public void setPeopleLimit(Integer peopleLimit) {
+        this.peopleLimit = peopleLimit;
+    }
+
+    public Destination getDestination() {
+        return destination;
+    }
+
+    public void setDestination(Destination destination) {
+        this.destination = destination;
+    }
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
+
+    public List<Hotel> getHotels() {
+        return hotels;
+    }
+
+    public void setHotels(List<Hotel> hotels) {
+        this.hotels = hotels;
+    }
 }

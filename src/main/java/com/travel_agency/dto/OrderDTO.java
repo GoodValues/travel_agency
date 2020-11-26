@@ -1,7 +1,6 @@
 package com.travel_agency.dto;
 
 import com.travel_agency.model.order.OrderStatusEnum;
-import com.travel_agency.model.trip.Trip;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

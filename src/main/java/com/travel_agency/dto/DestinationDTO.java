@@ -1,13 +1,10 @@
 package com.travel_agency.dto;
 
-import com.travel_agency.model.hotel.Hotel;
-import com.travel_agency.model.trip.Trip;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
 import java.util.ArrayList;
 import java.util.List;
 

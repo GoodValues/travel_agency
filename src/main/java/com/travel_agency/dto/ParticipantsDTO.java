@@ -1,7 +1,5 @@
 package com.travel_agency.dto;
 
-import com.travel_agency.model.trip.Trip;
-import com.travel_agency.model.user.UserRoleNameEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
