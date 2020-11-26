@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -24,21 +26,28 @@ public class Destination {
     @Id
     @GeneratedValue
     private Long id;
+
     @NotEmpty
-    @Column(name="continent")
-    private String continentName;
+    @Column(nullable = false)
+    private String continent;
+
     @NotEmpty
-    @Column(nullable = false, name = "country")
-    private String countryName;
+    @Column(nullable = false)
+    private String country;
+
     @NotEmpty
-    @Column(nullable = false, name = "city")
-    private String cityName;
+    @Column(nullable = false)
+    private String city;
+
     @NotEmpty
-    @Column(name = "airport")
-    private String airportName;
-    @OneToMany(mappedBy = "destination",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private String airport;
+
+    @OneToMany(mappedBy = "destination",cascade = CascadeType.ALL)
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<Hotel> hotels= new ArrayList<>();
-    @OneToMany(mappedBy = "destination", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+
+    @OneToMany(mappedBy = "destination", cascade = CascadeType.ALL)
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<Trip> trips = new ArrayList<>();
 
 

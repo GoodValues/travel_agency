@@ -15,15 +15,15 @@ insert into destination(id, continent, country, city, airport) VALUES
 (4, 'Ameryka Północna', 'Nowy Jork', 'F.Kennedego'),
 (5, 'Azja', 'Indie', 'Bombaj', 'Shivaji');
 
-insert into hotel(id, name, standard, location, description) VALUES
-(1, 'Hilton', 'FIVE_STAR', 'Zurych', 'Luksusowy hotel rodziny Hiltonów'),
-(2, 'Sheraton', 'FOUR_STAR', 'Barcelona', 'Bardzo porządny hotel'),
-(3, 'Marriot', 'FIVE_STAR', 'Bangkok', 'Amerykanski hotel dla bogatych'),
-(4, 'Plaza', 'THREE_STAR', 'Nowy Jork', 'Hotel przy Central Parku'),
-(5, 'Ibis', 'ONE_STAR', 'Bombaj', 'Hotel w wersji ekonomicznej'),
-(6,  'Hotelik', 'THREE_STAR', 'Zurych', 'Fajny hotel'),
-(7, 'Noclegownia', 'TWO_STAR', 'Bangkok', 'Dobry na tanie nocowanie'),
-(8, 'Hotel Manhattan', 'FOUR_STAR', 'Nowy Jork', 'Dobre miejsce do nocowania w Nowym Jorku');
+insert into hotel(id, name, standard, location, description, destination_id) VALUES
+(1, 'Hilton', 'FIVE_STAR', 'Zurych', 'Luksusowy hotel rodziny Hiltonów', 1),
+(2, 'Sheraton', 'FOUR_STAR', 'Barcelona', 'Bardzo porządny hotel', 2),
+(3, 'Marriot', 'FIVE_STAR', 'Bangkok', 'Amerykanski hotel dla bogatych', 3),
+(4, 'Plaza', 'THREE_STAR', 'Nowy Jork', 'Hotel przy Central Parku', 4),
+(5, 'Ibis', 'ONE_STAR', 'Bombaj', 'Hotel w wersji ekonomicznej', 5),
+(6,  'Hotelik', 'THREE_STAR', 'Zurych', 'Fajny hotel', 1),
+(7, 'Noclegownia', 'TWO_STAR', 'Bangkok', 'Dobry na tanie nocowanie', 3),
+(8, 'Hotel Manhattan', 'FOUR_STAR', 'Nowy Jork', 'Dobre miejsce do nocowania w Nowym Jorku', 4);
 
 insert into trip(id, date_from, date_to, duration, adult_price, child_price, trip_type,  alimenatation, description, status, people_limit) VALUES
 (1, 2021-01-20, 2020-01-30, 10, 120, 100, 'WINTER', 'AI', 'Zimowy wyjazd', 'ACTIVE', 20),
@@ -43,11 +43,12 @@ insert into user(id, first_name, last_name, email, password, role_name) VALUES
 (8, 'Genowefa','Pigwa', 'genowefa.pigwa@gmail.com', 'genowefa1234','USER');
 
 // czy tutaj będziemy zmieniac nazwy kolumn???
-insert into addres_id(id, id) VALUES
+insert into address_id(id, id) VALUES
 (1,1),(2,2),(3,3),(4,4),(5,5),(6,6),(7,7),(8,8);
 
-insert into destination_hotel_id(id, id) VALUES
-(1,1),(1,6),(3,7),(3,3),(4,8),(4,4),(2,2),(5,5);
+-- zerknij do góry czy do hotelu nie powinniśmy przypisać destination_id
+-- insert into destination_hotel_id(id, id) VALUES
+-- (1,1),(1,6),(3,7),(3,3),(4,8),(4,4),(2,2),(5,5);
 
 insert into destination_trip_id(id, id) VALUES
 (1,1),(2,1),(2,3),(3,4),(4,3),(5,5);
@@ -55,8 +56,8 @@ insert into destination_trip_id(id, id) VALUES
 insert into hotel_trip(hotel_id, trip_id) VALUES
 (1,1),(2,1),(1,3),(7,2),(8,1),(4,6);
 
-insert into user_trip(trip_id, user_id) VALUES
-(1,4),(2,1),(1,3),(5,7),(4,4),(3,3);
+insert into user_trip(user_id, trip_id) VALUES
+(4,1),(1,2),(3,1),(7,5),(4,4),(3,3);
 
 
 

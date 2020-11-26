@@ -11,8 +11,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @EqualsAndHashCode
 public class HotelDTO {
-    private String hotelName;
+
+    private Long id;
+    private String name;
     private HotelStandardEnum hotelStandardEnum;
+    private String location;
     private String description;
     private DestinationDTO destinationDTO;
+
 }

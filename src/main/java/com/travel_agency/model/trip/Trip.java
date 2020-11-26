@@ -66,7 +66,7 @@ public class Trip {
     private Integer peopleLimit;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name ="destination_trip_id")
+    @JoinColumn(name ="destination_id")
     private Destination destination;
 
     @ManyToMany(fetch = FetchType.LAZY,

@@ -10,7 +10,7 @@ public interface TripMapper {
 
     static TripMapper INSTANCE = Mappers.getMapper(TripMapper.class);
 
-    TripDTO tripDto(Trip trip);
+    TripDTO tripToDto(Trip trip);
     Trip dtoToTrip(TripDTO tripDto);
 
 }
