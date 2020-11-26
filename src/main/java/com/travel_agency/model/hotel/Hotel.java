@@ -23,16 +23,22 @@ public class Hotel {
     @Id
     @GeneratedValue
     private Long id;
+
     @NotEmpty
     @Column(nullable = false)
     private String name;
+
     @Enumerated(EnumType.STRING)
     private HotelStandardEnum standard;
+
     private String location;
+
     private String description;
+
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name="destination_hotel_id")
-    private Destination destionation;
+    @JoinColumn(name="destination_id")
+    private Destination destination;
+
     @ManyToMany(fetch = FetchType.EAGER,
             cascade = {CascadeType.ALL})
     @JoinTable(name = "hotel_trip",
