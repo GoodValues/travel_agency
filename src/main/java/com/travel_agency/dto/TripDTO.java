@@ -17,28 +17,10 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+@AllArgsConstructor
+@NoArgsConstructor
 @EqualsAndHashCode
 public class TripDTO {
-
-    public TripDTO(Long id, LocalDateTime dateFrom, LocalDateTime dateTo, Duration duration, BigDecimal priceForAdult, BigDecimal priceForChild, TripTypeEnum tripType, TripAlimentationEnum tripAlimentationEnum, String description, TripStatusEnum status, Integer peopleLimit, Destination destination, List<User> users, List<Hotel> hotels) {
-        this.id = id;
-        this.dateFrom = dateFrom;
-        this.dateTo = dateTo;
-        this.duration = duration;
-        this.priceForAdult = priceForAdult;
-        this.priceForChild = priceForChild;
-        this.tripType = tripType;
-        this.tripAlimentationEnum = tripAlimentationEnum;
-        this.description = description;
-        this.status = status;
-        this.peopleLimit = peopleLimit;
-        this.destination = destination;
-        this.users = users;
-        this.hotels = hotels;
-    }
-
-    public TripDTO() {
-    }
 
     private Long id;
     private LocalDateTime dateFrom;
