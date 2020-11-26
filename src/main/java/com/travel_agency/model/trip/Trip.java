@@ -23,7 +23,7 @@ import java.util.List;
 @Entity
 @EqualsAndHashCode
 @AllArgsConstructor
-@NoArgsConstructor
+@NoArgsConstructor //bez @Data
 @Table(name = "trip")
 public class Trip {
 
