@@ -23,12 +23,10 @@ import java.util.List;
 @Entity
 @EqualsAndHashCode
 @AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "trip")
 public class Trip {
 
-
-    public Trip() {
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
