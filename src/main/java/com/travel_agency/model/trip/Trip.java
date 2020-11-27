@@ -84,6 +84,8 @@ public class Trip {
             inverseJoinColumns = @JoinColumn(name = "hotel_id"))
     private List<Hotel> hotels = new ArrayList<>();
 
+    private Long visitCount;
+
     public Long getId() {
         return id;
     }
@@ -194,5 +196,17 @@ public class Trip {
 
     public void setHotels(List<Hotel> hotels) {
         this.hotels = hotels;
+    }
+
+    public Long getVisitCount() {
+        return visitCount;
+    }
+
+    public void setVisitCount(Long visitCount) {
+        this.visitCount = visitCount;
+    }
+
+    public void incrementVisitCount() {
+        this.visitCount = visitCount++;
     }
 }

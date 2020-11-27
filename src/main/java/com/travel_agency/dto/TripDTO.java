@@ -41,6 +41,8 @@ public class TripDTO {
     private List<User> users = new ArrayList<>();
     private List<Hotel> hotels = new ArrayList<>();
 
+    private Long visitCount;
+
     public Long getId() {
         return id;
     }
@@ -151,5 +153,17 @@ public class TripDTO {
 
     public void setHotels(List<Hotel> hotels) {
         this.hotels = hotels;
+    }
+
+    public Long getVisitCount() {
+        return visitCount;
+    }
+
+    public void setVisitCount(Long visitCount) {
+        this.visitCount = visitCount;
+    }
+
+    public void incrementVisitCount() {
+        this.visitCount = visitCount++;
     }
 }

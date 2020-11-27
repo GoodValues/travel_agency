@@ -4,6 +4,7 @@ import com.travel_agency.dto.TripDTO;
 import com.travel_agency.service.TripService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.math.BigDecimal;
 import java.util.List;
-
 
 @Controller
 public class TripController {
@@ -45,5 +46,12 @@ public class TripController {
         TripDTO tripDTO = tripService.getTripById(id);
         String tripName = tripDTO.getDescription();
         return tripName;
+    }
+
+    @ResponseBody
+    @GetMapping(value = "/countVisit/{id}", produces = "application/json")
+    Long getCountVisitById(@PathVariable("id") Long id) {
+        TripDTO tripDTO = tripService.getTripById(id);
+        return tripDTO.getVisitCount();
     }
 }
