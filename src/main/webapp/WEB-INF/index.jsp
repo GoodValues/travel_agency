@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<h1> Witaj </h1>
+<h1> Witaj: ${userName} </h1>
 <h2>Data Twoich odwiedzin: ${dateTime}</h2>
 <h2>Witryna została odwiedzona ${visitCount} razy! </h2>
 
