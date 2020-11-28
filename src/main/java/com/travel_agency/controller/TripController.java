@@ -36,10 +36,7 @@ public class TripController {
     @ResponseBody
     @GetMapping(value = "/trips/{id}", produces = "application/json")
     TripDTO getTripById(@PathVariable("id") Long id) {
-        TripDTO tripDTO = tripService.getTripById(id);
-        ++count;
-        tripDTO.setVisits(count);
-        return tripDTO;
+        return tripService.getTripById(id);
     }
 
     @ResponseBody
