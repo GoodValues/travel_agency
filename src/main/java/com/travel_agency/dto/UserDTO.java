@@ -20,6 +20,7 @@ public class UserDTO {
     private String address;
     private String email;
     private String password;
+    private String confirmPassword;
     private UserRoleNameEnum roleName;
     private List<TripDTO> trips = new ArrayList<>();
 
@@ -85,5 +86,13 @@ public class UserDTO {
 
     public void setTrips(List<TripDTO> trips) {
         this.trips = trips;
+    }
+
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
     }
 }

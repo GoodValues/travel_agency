@@ -58,6 +58,7 @@ public class User {
     private String email;
 
     private String password;
+    private String confirmPassword;
 
     @Enumerated(EnumType.STRING)
     private UserRoleNameEnum roleName;
