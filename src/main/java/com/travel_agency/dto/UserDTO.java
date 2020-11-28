@@ -1,5 +1,7 @@
 package com.travel_agency.dto;
 
+import com.travel_agency.model.address.Address;
+import com.travel_agency.model.reservation.Reservation;
 import com.travel_agency.model.user.UserRoleNameEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,12 +19,13 @@ public class UserDTO {
     private Long id;
     private String firstName;
     private String lastName;
-    private String address;
     private String email;
     private String password;
     private String confirmPassword;
     private UserRoleNameEnum roleName;
     private List<TripDTO> trips = new ArrayList<>();
+    private final List<Reservation> reservations = new ArrayList<>();
+    private Address address;
 
     public Long getId() {
         return id;
@@ -46,14 +49,6 @@ public class UserDTO {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 
     public String getEmail() {
@@ -94,5 +89,17 @@ public class UserDTO {
 
     public void setConfirmPassword(String confirmPassword) {
         this.confirmPassword = confirmPassword;
+    }
+
+    public List<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 }
