@@ -1,13 +1,14 @@
 package com.travel_agency.model.user;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.travel_agency.model.address.Address;
 import com.travel_agency.model.reservation.Reservation;
 import com.travel_agency.model.trip.Trip;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import org.hibernate.validator.constraints.UniqueElements;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -25,7 +26,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
@@ -41,19 +41,16 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotEmpty
     @Column(nullable=false)
     @Size(min=1)
     private String firstName;
 
-    @NotEmpty
     @Column(nullable=false)
     @Size(min=1)
     private String lastName;
 
     @Column(nullable = false)
     @Email
-    @NotEmpty
     private String email;
 
     private String password;
@@ -69,10 +66,12 @@ public class User {
     @JoinTable(name = "user_trip",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "trip_id"))
+    @JsonIgnore
     private List<Trip> trips = new ArrayList<>();
 
     @OneToMany(mappedBy = "user", cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
     @Column(nullable = true)
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<Reservation> reservations = new ArrayList<>();
 
 //    @OneToOne(targetEntity = Address.class)

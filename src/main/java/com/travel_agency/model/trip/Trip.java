@@ -1,16 +1,18 @@
 package com.travel_agency.model.trip;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.travel_agency.model.destination.Destination;
 import com.travel_agency.model.hotel.Hotel;
 import com.travel_agency.model.user.User;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.boot.convert.DurationUnit;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
 import java.math.BigDecimal;
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -30,15 +32,12 @@ public class Trip {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotEmpty
     @DateTimeFormat
     private LocalDateTime dateFrom;
 
-    @NotEmpty
     @DateTimeFormat
     private LocalDateTime dateTo;
 
-    @NotEmpty
     @DurationUnit(ChronoUnit.DAYS)
     private Duration duration;
 
@@ -57,7 +56,6 @@ public class Trip {
 
     private String description;
 
-
     @Enumerated(EnumType.STRING)
     private TripStatusEnum status;
 
@@ -74,6 +72,7 @@ public class Trip {
     @JoinTable(name = "user_trip",
             joinColumns = @JoinColumn(name = "trip_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id"))
+    @JsonIgnore
     private List<User> users = new ArrayList<>();
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
@@ -82,8 +81,6 @@ public class Trip {
             inverseJoinColumns = @JoinColumn(name = "hotel_id"))
     private List<Hotel> hotels = new ArrayList<>();
 
-    @Column(nullable = true, name="visits")
-    private Integer visits;
 
     public Long getId() {
         return id;
@@ -197,15 +194,4 @@ public class Trip {
         this.hotels = hotels;
     }
 
-    public Integer getVisits() {
-        return visits;
-    }
-
-    public void setVisits(Integer visits) {
-        this.visits = visits;
-    }
-
-    public void incrementVisits() {
-        this.visits = visits++;
-    }
 }

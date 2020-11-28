@@ -4,7 +4,6 @@ import com.travel_agency.model.address.Address;
 import com.travel_agency.model.reservation.Reservation;
 import com.travel_agency.model.user.UserRoleNameEnum;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 

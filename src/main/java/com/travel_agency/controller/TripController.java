@@ -26,7 +26,7 @@ public class TripController {
 
     @ResponseBody
     @GetMapping("/trips")
-    public List<TripDTO> getAllTrips(Model model) {
+    public List<TripDTO> getAllTrips() {
 //        List<TripDTO> trips = tripService.getAllTrips();
 //        model.addAttribute("tripsList", trips);
 //        return "trips";
@@ -45,12 +45,5 @@ public class TripController {
         TripDTO tripDTO = tripService.getTripById(id);
         String tripName = tripDTO.getDescription();
         return tripName;
-    }
-
-    @ResponseBody
-    @GetMapping(value = "/countVisit/{id}", produces = "application/json")
-    int getCountVisitById(@PathVariable("id") Long id) {
-        TripDTO tripDTO = tripService.getTripById(id);
-        return tripDTO.getVisits();
     }
 }

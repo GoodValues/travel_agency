@@ -40,7 +40,6 @@ public class TripDTO {
     private List<User> users = new ArrayList<>();
     private List<Hotel> hotels = new ArrayList<>();
 
-    private Integer visits;
 
     public Long getId() {
         return id;
@@ -154,15 +153,4 @@ public class TripDTO {
         this.hotels = hotels;
     }
 
-    public Integer getVisits() {
-        return visits;
-    }
-
-    public void setVisits(Integer visits) {
-        this.visits = visits;
-    }
-
-    public void incrementVisits() {
-        this.visits = visits++;
-    }
 }

@@ -40,7 +40,6 @@ public class TripService {
         if (trip.get().getTripType().name().equals("WINTER"))
             trip.get().setPriceForAdult(tripPriceAdult.multiply(BigDecimal.valueOf(0.8)));
 
-        trip.get().setVisits(trip.get().getVisits() + 1);
         return trip.map(TripMapper.INSTANCE::tripToDto).orElse(null);
     }
 }
