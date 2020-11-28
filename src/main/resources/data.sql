@@ -1,3 +1,10 @@
+insert into trip(id, date_from, date_to, duration, adult_price, child_price, trip_type,  alimentation, description, status, people_limit, destination_id, visits) VALUES
+(1, '2021-01-20', '2020-01-30', 10, 120, 100, 'WINTER', 'AI', 'Zimowy wyjazd', 'ACTIVE', 20, 1, 0),
+(2, '2021-05-15', '2020-05-20', 5, 110, 90, 'SUMMER', 'HB', 'Fajny majowy urlop', 'ACTIVE', 30, 2, 0),
+(3, '2021-07-10', '2020-07-21', 11, 150, 130, 'ROUND_TRIP', 'FB', 'urlop wakacyjny', 'PROMOTED', 10, 3, 0),
+(4, '2021-04-7', '2020-04-14', 7, 90, 80, 'LAST_MINUTE', 'SC', 'Wyjazd wczesną wiosną', 'EXPIRED', 20, 4, 0),
+(5, '2021-09-8', '2020-09-16', 8, 129, 115, 'ROUND_TRIP', 'AI', 'Wypadzik wrześniowy', 'ACTIVE', 8, 5, 0);
+
 insert into address(id, road, road_number, postal_code, city, country) VALUES
 (1, 'Marszałkowska', 12, '02-497', 'Warszawa', 'Polska'),
 (2, 'Grójecka', 4, '01-437', 'Radom', 'Polska'),
@@ -25,13 +32,6 @@ insert into hotel(id, name, standard, location, description, destination_id) VAL
 (7, 'Noclegownia', 'TWO_STAR', 'Bangkok', 'Dobry na tanie nocowanie', 3),
 (8, 'Hotel Manhattan', 'FOUR_STAR', 'Nowy Jork', 'Dobre miejsce do nocowania w Nowym Jorku', 4);
 
-insert into trip(id, date_from, date_to, duration, adult_price, child_price, trip_type,  alimentation, description, status, people_limit, destination_id) VALUES
-(1, '2021-01-20', '2020-01-30', 10, 120, 100, 'WINTER', 'AI', 'Zimowy wyjazd', 'ACTIVE', 20, 1),
-(2, '2021-05-15', '2020-05-20', 5, 110, 90, 'SUMMER', 'HB', 'Fajny majowy urlop', 'ACTIVE', 30, 2),
-(3, '2021-07-10', '2020-07-21', 11, 150, 130, 'ROUND_TRIP', 'FB', 'urlop wakacyjny', 'PROMOTED', 10, 3),
-(4, '2021-04-7', '2020-04-14', 7, 90, 80, 'LAST_MINUTE', 'SC', 'Wyjazd wczesną wiosną', 'EXPIRED', 20, 4),
-(5, '2021-09-8', '2020-09-16', 8, 129, 115, 'ROUND_TRIP', 'AI', 'Wypadzik wrześniowy', 'ACTIVE', 8, 5);
-
 insert into user(id, first_name, last_name, email, password, role_name) VALUES
 (1, 'Jan','Kowalski', 'jan.kowalski@gmail.com', 'janek1234','USER'),
 (2, 'Agata','Nowak', 'agata.nowak@gmail.com', 'agatka1234','ADMIN'),
@@ -42,16 +42,6 @@ insert into user(id, first_name, last_name, email, password, role_name) VALUES
 (7, 'Karol','Szepietowski', 'karol.szepietowski@gmail.com', 'karol1234','ADMIN'),
 (8, 'Genowefa','Pigwa', 'genowefa.pigwa@gmail.com', 'genowefa1234','USER');
 
-// czy tutaj będziemy zmieniac nazwy kolumn???
-insert into address_id(id, id) VALUES
-(1,1),(2,2),(3,3),(4,4),(5,5),(6,6),(7,7),(8,8);
-
--- zerknij do góry czy do hotelu nie powinniśmy przypisać destination_id
--- insert into destination_hotel_id(id, id) VALUES
--- (1,1),(1,6),(3,7),(3,3),(4,8),(4,4),(2,2),(5,5);
-
-insert into destination_trip_id(id, id) VALUES
-(1,1),(2,1),(2,3),(3,4),(4,3),(5,5);
 
 insert into hotel_trip(hotel_id, trip_id) VALUES
 (1,1),(2,1),(1,3),(7,2),(8,1),(4,6);
