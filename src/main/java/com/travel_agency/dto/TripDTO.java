@@ -7,7 +7,6 @@ import com.travel_agency.model.trip.TripStatusEnum;
 import com.travel_agency.model.trip.TripTypeEnum;
 import com.travel_agency.model.user.User;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
@@ -41,7 +40,7 @@ public class TripDTO {
     private List<User> users = new ArrayList<>();
     private List<Hotel> hotels = new ArrayList<>();
 
-    private Long visitCount;
+    private Integer visits;
 
     public Long getId() {
         return id;
@@ -155,15 +154,15 @@ public class TripDTO {
         this.hotels = hotels;
     }
 
-    public Long getVisitCount() {
-        return visitCount;
+    public Integer getVisits() {
+        return visits;
     }
 
-    public void setVisitCount(Long visitCount) {
-        this.visitCount = visitCount;
+    public void setVisits(Integer visits) {
+        this.visits = visits;
     }
 
-    public void incrementVisitCount() {
-        this.visitCount = visitCount++;
+    public void incrementVisits() {
+        this.visits = visits++;
     }
 }

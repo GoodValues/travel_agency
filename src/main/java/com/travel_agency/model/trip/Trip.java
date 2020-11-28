@@ -4,7 +4,6 @@ import com.travel_agency.model.destination.Destination;
 import com.travel_agency.model.hotel.Hotel;
 import com.travel_agency.model.user.User;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.springframework.boot.convert.DurationUnit;
@@ -14,7 +13,6 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.math.BigDecimal;
 import java.time.Duration;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
@@ -84,7 +82,8 @@ public class Trip {
             inverseJoinColumns = @JoinColumn(name = "hotel_id"))
     private List<Hotel> hotels = new ArrayList<>();
 
-    private Long visitCount;
+    @Column(nullable = true, name="visits")
+    private Integer visits;
 
     public Long getId() {
         return id;
@@ -198,15 +197,15 @@ public class Trip {
         this.hotels = hotels;
     }
 
-    public Long getVisitCount() {
-        return visitCount;
+    public Integer getVisits() {
+        return visits;
     }
 
-    public void setVisitCount(Long visitCount) {
-        this.visitCount = visitCount;
+    public void setVisits(Integer visits) {
+        this.visits = visits;
     }
 
-    public void incrementVisitCount() {
-        this.visitCount = visitCount++;
+    public void incrementVisits() {
+        this.visits = visits++;
     }
 }

@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.UniqueElements;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -25,6 +26,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,14 +43,16 @@ public class User {
     private Long id;
 
     @NotEmpty
-    @Column(nullable=false, length=1)
+    @Column(nullable=false)
+    @Size(min=1)
     private String firstName;
 
     @NotEmpty
-    @Column(nullable=false, length=1)
+    @Column(nullable=false)
+    @Size(min=1)
     private String lastName;
 
-    @Column(unique = true, nullable = false, length = 100)
+    @Column(nullable = false)
     @Email
     @NotEmpty
     private String email;
