@@ -10,8 +10,6 @@ import lombok.NoArgsConstructor;
 import java.util.ArrayList;
 import java.util.List;
 
-@AllArgsConstructor
-@NoArgsConstructor
 @EqualsAndHashCode
 public class UserDTO {
 
@@ -25,6 +23,21 @@ public class UserDTO {
     private List<TripDTO> trips = new ArrayList<>();
     private final List<Reservation> reservations = new ArrayList<>();
     private Address address;
+
+    public UserDTO(Long id, String firstName, String lastName, String email, String password, String confirmPassword, UserRoleNameEnum roleName, List<TripDTO> trips, Address address) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.confirmPassword = confirmPassword;
+        this.roleName = roleName;
+        this.trips = trips;
+        this.address = address;
+    }
+
+    public UserDTO() {
+    }
 
     public Long getId() {
         return id;
@@ -66,6 +79,14 @@ public class UserDTO {
         this.password = password;
     }
 
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
+    }
+
     public UserRoleNameEnum getRoleName() {
         return roleName;
     }
@@ -80,14 +101,6 @@ public class UserDTO {
 
     public void setTrips(List<TripDTO> trips) {
         this.trips = trips;
-    }
-
-    public String getConfirmPassword() {
-        return confirmPassword;
-    }
-
-    public void setConfirmPassword(String confirmPassword) {
-        this.confirmPassword = confirmPassword;
     }
 
     public List<Reservation> getReservations() {

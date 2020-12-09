@@ -5,8 +5,10 @@ import com.travel_agency.model.address.Address;
 import com.travel_agency.model.reservation.Reservation;
 import com.travel_agency.model.trip.Trip;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
@@ -31,8 +33,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
 @EqualsAndHashCode
 @Table(name = "user")
 public class User {
@@ -78,6 +78,22 @@ public class User {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id")
     private Address address;
+
+    public User(Long id, @Size(min = 1) String firstName, @Size(min = 1) String lastName, @Email String email, String password, String confirmPassword, UserRoleNameEnum roleName, List<Trip> trips, List<Reservation> reservations, Address address) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.confirmPassword = confirmPassword;
+        this.roleName = roleName;
+        this.trips = trips;
+        this.reservations = reservations;
+        this.address = address;
+    }
+
+    public User() {
+    }
 
     public Long getId() {
         return id;
