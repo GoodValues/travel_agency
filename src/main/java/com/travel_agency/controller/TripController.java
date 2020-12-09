@@ -4,11 +4,9 @@ import com.travel_agency.dto.TripDTO;
 import com.travel_agency.service.TripService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.context.annotation.RequestScope;
 
 import java.util.List;
 
@@ -45,5 +43,11 @@ public class TripController {
         TripDTO tripDTO = tripService.getTripById(id);
         String tripName = tripDTO.getDescription();
         return tripName;
+    }
+
+    @ResponseBody
+    @GetMapping(value = "/getTripsForUser/{id}", produces = "application/json")
+    List<TripDTO> getTripsForUser(@PathVariable("id") Long id) {
+        return tripService.getTripsForUser(id);
     }
 }
