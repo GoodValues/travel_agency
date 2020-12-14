@@ -6,10 +6,7 @@ import com.travel_agency.service.HotelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,4 +26,35 @@ public class HotelController {
     public List<HotelDTO> getAllHotels() {
         return hotelService.getAllHotels();
     }
+
+    @ResponseBody
+    @GetMapping("/hotels/{id}")
+    public HotelDTO getHotelById(@PathVariable Long id){
+        return hotelService.getHotelById(id);
+    }
+
+    @ResponseBody
+    @GetMapping("/hotels/{standard}")
+    public List<HotelDTO> getHotelsByStatus(@PathVariable String standard){
+        return hotelService.getHotelsByStandard(standard);
+    }
+
+    @GetMapping("/deleteHotel")
+    public void deleteHotel(@RequestParam Long id){
+        hotelService.deleteHotelById(id);
+    }
+
+    @PostMapping("/editHotel")
+    public void editHotel(@RequestParam Long id, @RequestBody HotelDTO hotelDTO){
+        hotelService.editAndSaveHotel(id, hotelDTO);
+    }
+
+    @GetMapping("/hotel/{id}/trips")
+    public List<TripDTO> getTripsForHotelById(@PathVariable Long id){
+        return hotelService.getTripsForHotel(id);
+    }
+
+
+
+
 }
