@@ -1,6 +1,7 @@
 package com.travel_agency.model.hotel;
 
 import com.travel_agency.model.destination.Destination;
+import com.travel_agency.model.trip.Trip;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -44,6 +45,61 @@ public class Hotel {
     @JoinTable(name = "hotel_trip",
             joinColumns = @JoinColumn(name = "hotel_id"),
             inverseJoinColumns = @JoinColumn(name = "trip_id"))
-    private List<Hotel> trips = new ArrayList<>();
+    private List<Trip> trips = new ArrayList<>();
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public HotelStandardEnum getStandard() {
+        return standard;
+    }
+
+    public void setStandard(HotelStandardEnum standard) {
+        this.standard = standard;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Destination getDestination() {
+        return destination;
+    }
+
+    public void setDestination(Destination destination) {
+        this.destination = destination;
+    }
+
+    public List<Trip> getTrips() {
+        return trips;
+    }
+
+    public void setTrips(List<Trip> trips) {
+        this.trips = trips;
+    }
 }
