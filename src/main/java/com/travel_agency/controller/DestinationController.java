@@ -1,6 +1,7 @@
 package com.travel_agency.controller;
 
 import com.travel_agency.dto.DestinationDTO;
+import com.travel_agency.dto.HotelDTO;
 import com.travel_agency.dto.TripDTO;
 import com.travel_agency.service.DestinationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +47,15 @@ public class DestinationController {
         return destinationService.getTripsForDestination(id);
     }
 
+    @PostMapping("/saveDestination")
+    public void saveDestination( @RequestBody DestinationDTO destinationDTO){
+        destinationService.saveDestination(destinationDTO);
+    }
+
+    @GetMapping("/destination/{id}/hotels")
+    public List<HotelDTO> getHotelsForDestination(@PathVariable Long id){
+        return destinationService.getHotelsForDestination(id);
+    }
 
 
 
