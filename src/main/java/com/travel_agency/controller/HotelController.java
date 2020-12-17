@@ -49,6 +49,7 @@ public class HotelController {
         hotelService.editAndSaveHotel(id, hotelDTO);
     }
 
+    @ResponseBody
     @GetMapping("/hotel/{id}/trips")
     public List<TripDTO> getTripsForHotelById(@PathVariable Long id){
         return hotelService.getTripsForHotel(id);
