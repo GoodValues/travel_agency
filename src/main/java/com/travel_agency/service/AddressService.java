@@ -6,6 +6,7 @@ import com.travel_agency.model.address.Address;
 import com.travel_agency.model.user.User;
 import com.travel_agency.repository.AddressRepository;
 import com.travel_agency.repository.UserRepository;
+import org.graalvm.compiler.core.common.type.ArithmeticOpTable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,22 +26,38 @@ public class AddressService {
 
     public AddressDTO createNewAddress(String road, Long roadNumber, String postalCode,
                                  String city, String country, Long userId){
-
         Address address = new Address();
-        address.setRoad(road);
-        address.setRoadNumber(roadNumber);
-        address.setPostalCode(postalCode);
-        address.setCity(city);
-        address.setCountry(country);
+        setAddressFields(address,road,roadNumber,postalCode,city,country);
         User user = findUserById(userId);
         address.setUser(user);
         addressRepository.save(address);
         return AddressMapper.INSTANCE.addressDTO(address);
     }
 
-    public User findUserById(Long id){
+    public AddressDTO editAddress(Long addressId,String road, Long roadNumber, String postalCode,
+                                  String city, String country){
+        Address address = addressRepository.findById(addressId).orElseThrow(NoSuchElementException::new);
+        setAddressFields(address,road,roadNumber,postalCode,city,country);
+        addressRepository.save(address);
+        return AddressMapper.INSTANCE.addressDTO(address);
+    }
+
+    private User findUserById(Long id){
         return userRepository.findById(id).orElseThrow(NoSuchElementException::new);
     }
+    private void setAddressFields(Address address,String road, Long roadNumber, String postalCode,
+                                  String city, String country){
+        address.setRoad(road);
+        address.setRoadNumber(roadNumber);
+        address.setPostalCode(postalCode);
+        address.setCity(city);
+        address.setCountry(country);
+    }
+
+
+
+
+
 
 
 
