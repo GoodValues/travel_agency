@@ -27,7 +27,7 @@ public class Order {
     private BigDecimal balance;
     @Enumerated(EnumType.STRING)
     private OrderStatusEnum status;
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "order")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "order", cascade = CascadeType.ALL)
     List<Participant> participants = new ArrayList<>();
     @OneToOne
     private User user;
