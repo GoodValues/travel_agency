@@ -3,31 +3,31 @@ package com.travel_agency.model.order;
 import com.travel_agency.model.participant.Participant;
 import com.travel_agency.model.trip.Trip;
 import com.travel_agency.model.user.User;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Data
-@EqualsAndHashCode
-@AllArgsConstructor
-@NoArgsConstructor
-@Table(name = "order")
-public class Order {
+public class Ordero {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private BigDecimal balance;
     @Enumerated(EnumType.STRING)
     private OrderStatusEnum status;
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "order", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "ordero", cascade = CascadeType.ALL)
     List<Participant> participants = new ArrayList<>();
     @OneToOne
     private User user;

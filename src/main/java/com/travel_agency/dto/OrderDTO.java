@@ -17,10 +17,10 @@ import java.util.List;
 public class OrderDTO {
     private Long id;
     private TripDTO tripDTO;
-    private List<ParticipantDTO> participants = new ArrayList<>();
+    private List<ParticipantsDTO> participants = new ArrayList<>();
     private BigDecimal balance;
     private UserDTO userDTO;
-    private OrderStatusEnum status;
+    private OrderStatusEnum orderStatusEnum;
 
     public Long getId() {
         return id;
@@ -38,11 +38,11 @@ public class OrderDTO {
         this.tripDTO = tripDTO;
     }
 
-    public List<ParticipantDTO> getParticipants() {
+    public List<ParticipantsDTO> getParticipants() {
         return participants;
     }
 
-    public void setParticipants(List<ParticipantDTO> participants) {
+    public void setParticipants(List<ParticipantsDTO> participants) {
         this.participants = participants;
     }
 
@@ -62,11 +62,11 @@ public class OrderDTO {
         this.userDTO = userDTO;
     }
 
-    public OrderStatusEnum getStatus() {
-        return status;
+    public OrderStatusEnum getOrderStatusEnum() {
+        return orderStatusEnum;
     }
 
-    public void setStatus(OrderStatusEnum status) {
-        this.status = status;
+    public void setOrderStatusEnum(OrderStatusEnum orderStatusEnum) {
+        this.orderStatusEnum = orderStatusEnum;
     }
 }

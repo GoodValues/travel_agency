@@ -1,7 +1,7 @@
 package com.travel_agency.mapper;
 
 import com.travel_agency.dto.OrderDTO;
-import com.travel_agency.model.order.Order;
+import com.travel_agency.model.order.Ordero;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -10,7 +10,7 @@ public interface OrderMapper {
 
     static OrderMapper INSTANCE = Mappers.getMapper(OrderMapper.class);
 
-    OrderDTO orderDTO(Order order);
-    Order dtoToOrder(OrderDTO orderDTO);
+    OrderDTO orderDTO(Ordero ordero);
+    Ordero dtoToOrder(OrderDTO orderDTO);
 
 }

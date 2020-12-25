@@ -1,6 +1,6 @@
 package com.travel_agency.model.participant;
 
-import com.travel_agency.model.order.Order;
+import com.travel_agency.model.order.Ordero;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -27,8 +27,8 @@ public class Participant {
     private Long pesel;
     private LocalDate dateOfBirth;
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="order")
-    private Order order;
+    @JoinColumn(name="ordero_id")
+    private Ordero ordero;
 
     public Long getId() {
         return id;
@@ -86,11 +86,11 @@ public class Participant {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public Order getOrder() {
-        return order;
+    public Ordero getOrdero() {
+        return ordero;
     }
 
-    public void setOrder(Order order) {
-        this.order = order;
+    public void setOrdero(Ordero ordero) {
+        this.ordero = ordero;
     }
 }

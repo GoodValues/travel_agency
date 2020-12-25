@@ -1,11 +1,9 @@
 package com.travel_agency.service;
 
 import com.travel_agency.dto.OrderDTO;
-import com.travel_agency.dto.ParticipantDTO;
+import com.travel_agency.dto.ParticipantsDTO;
 import com.travel_agency.mapper.OrderMapper;
-import com.travel_agency.model.order.Order;
-import com.travel_agency.model.order.OrderStatusEnum;
-import com.travel_agency.model.participant.Participant;
+import com.travel_agency.model.order.Ordero;
 import com.travel_agency.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,14 +36,14 @@ public class OrderService {
     }
 
     public List<OrderDTO> getOrderByStatus(String status) {
-        return orderRepository.findAllByOrderStatusEnum(status)
+        return orderRepository.findByStatus(status)
                 .orElseThrow(NoSuchElementException::new)
                 .stream()
                 .map(OrderMapper.INSTANCE::orderDTO)
                 .collect(Collectors.toList());
     }
 
-    public List<ParticipantDTO> getParticipantsForOrderById(Long id){
+    public List<ParticipantsDTO> getParticipantsForOrderById(Long id){
         OrderDTO orderDTO = orderRepository.findById(id)
                 .map(OrderMapper.INSTANCE::orderDTO)
                 .orElseThrow(NoSuchElementException::new);
@@ -54,13 +52,13 @@ public class OrderService {
     }
 
     public void saveOrder(OrderDTO orderDTO) {
-        Order order = OrderMapper.INSTANCE.dtoToOrder(orderDTO);
-        orderRepository.save(order);
+        Ordero ordero = OrderMapper.INSTANCE.dtoToOrder(orderDTO);
+        orderRepository.save(ordero);
     }
 
     public void deleteOrderById(Long id) {
-        Order order = orderRepository.findById(id).orElseThrow(NoSuchElementException::new);
-        orderRepository.delete(order);
+        Ordero ordero = orderRepository.findById(id).orElseThrow(NoSuchElementException::new);
+        orderRepository.delete(ordero);
     }
 
 }

@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 //@EntityScan(basePackages = "com.travel_agency.model")
 @EntityScan(basePackages= {"com.travel_agency.model.address","com.travel_agency.model.branch", "com.travel_agency.model.destination",
         "com.travel_agency.model.hotel", "com.travel_agency.model.order", "com.travel_agency.model.reservation",
-        "com.travel_agency.model.trip", "com.travel_agency.model.user"})
+        "com.travel_agency.model.trip", "com.travel_agency.model.user", "com.travel_agency.model.participant"})
 public class SpringDataConfig {
 
 }
