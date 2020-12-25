@@ -69,7 +69,7 @@ public class User {
     @JsonIgnore
     private List<Trip> trips = new ArrayList<>();
 
-    @OneToMany(mappedBy = "user", cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "user", cascade = {CascadeType.ALL})
     @Column(nullable = true)
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<Reservation> reservations = new ArrayList<>();

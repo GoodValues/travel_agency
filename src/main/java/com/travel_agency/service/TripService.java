@@ -38,8 +38,8 @@ public class TripService {
 
         BigDecimal tripPriceAdult = trip.orElse(null).getPriceForAdult();
 
-        if (trip.get().getTripType().name().equals("SUMMER")) // takie tematy trzeba omówić, na pewno wstawianie tutaj wartosci jest sporym bledem do ktorego kazdy sie dowali
-            trip.get().setPriceForAdult(tripPriceAdult.multiply(BigDecimal.valueOf(0.9))); // poza tym taka metoda powinna sie nazywac getTripByIdWithDiscountPrices
+        if (trip.get().getTripType().name().equals("SUMMER"))
+            trip.get().setPriceForAdult(tripPriceAdult.multiply(BigDecimal.valueOf(0.9)));
         if (trip.get().getTripType().name().equals("WINTER"))
             trip.get().setPriceForAdult(tripPriceAdult.multiply(BigDecimal.valueOf(0.8)));
 

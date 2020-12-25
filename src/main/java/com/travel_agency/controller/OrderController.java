@@ -1,7 +1,7 @@
 package com.travel_agency.controller;
 
 import com.travel_agency.dto.OrderDTO;
-import com.travel_agency.dto.ParticipantDTO;
+import com.travel_agency.dto.ParticipantsDTO;
 import com.travel_agency.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -39,7 +39,7 @@ public class OrderController {
 
     @ResponseBody
     @GetMapping("/order/{id}/participants")
-    public List<ParticipantDTO> getParticipantsForOrderById(@PathVariable Long id){
+    public List<ParticipantsDTO> getParticipantsForOrderById(@PathVariable Long id){
         return orderService.getParticipantsForOrderById(id);
     }
 
