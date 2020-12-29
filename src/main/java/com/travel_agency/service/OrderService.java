@@ -1,7 +1,7 @@
 package com.travel_agency.service;
 
-import com.travel_agency.dto.OrderDTO;
-import com.travel_agency.dto.ParticipantsDTO;
+import com.travel_agency.dto.OrderoDTO;
+import com.travel_agency.dto.ParticipantDTO;
 import com.travel_agency.mapper.OrderMapper;
 import com.travel_agency.model.order.Ordero;
 import com.travel_agency.repository.OrderRepository;
@@ -22,20 +22,20 @@ public class OrderService {
         this.orderRepository = orderRepository;
     }
 
-    public OrderDTO getOrderById(Long id) {
+    public OrderoDTO getOrderById(Long id) {
         return orderRepository.findById(id)
                 .map(OrderMapper.INSTANCE::orderDTO)
                 .orElseThrow(NoSuchElementException::new);
     }
 
-    public List<OrderDTO> getAllOrders() {
+    public List<OrderoDTO> getAllOrders() {
         return orderRepository.findAll()
                 .stream()
                 .map(OrderMapper.INSTANCE::orderDTO)
                 .collect(Collectors.toList());
     }
 
-    public List<OrderDTO> getOrderByStatus(String status) {
+    public List<OrderoDTO> getOrderByStatus(String status) {
         return orderRepository.findByStatus(status)
                 .orElseThrow(NoSuchElementException::new)
                 .stream()
@@ -43,16 +43,16 @@ public class OrderService {
                 .collect(Collectors.toList());
     }
 
-    public List<ParticipantsDTO> getParticipantsForOrderById(Long id){
-        OrderDTO orderDTO = orderRepository.findById(id)
+    public List<ParticipantDTO> getParticipantsForOrderById(Long id){
+        OrderoDTO orderoDTO = orderRepository.findById(id)
                 .map(OrderMapper.INSTANCE::orderDTO)
                 .orElseThrow(NoSuchElementException::new);
 
-        return orderDTO.getParticipants();
+        return orderoDTO.getParticipants();
     }
 
-    public void saveOrder(OrderDTO orderDTO) {
-        Ordero ordero = OrderMapper.INSTANCE.dtoToOrder(orderDTO);
+    public void saveOrder(OrderoDTO orderoDTO) {
+        Ordero ordero = OrderMapper.INSTANCE.dtoToOrder(orderoDTO);
         orderRepository.save(ordero);
     }
 

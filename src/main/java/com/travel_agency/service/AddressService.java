@@ -24,13 +24,13 @@ public class AddressService {
     }
 
     public AddressDTO createNewAddress(String road, Long roadNumber, String postalCode,
-                                 String city, String country, Long userId){
+                                       String city, String country, Long userId){
         Address address = new Address();
         setAddressFields(address,road,roadNumber,postalCode,city,country);
         User user = findUserById(userId);
         address.setUser(user);
         addressRepository.save(address);
-        return AddressMapper.INSTANCE.addressDTO(address);
+        return AddressMapper.INSTANCE.addressToDTO(address);
     }
 
     public AddressDTO editAddress(Long addressId,String road, Long roadNumber, String postalCode,
@@ -38,7 +38,7 @@ public class AddressService {
         Address address = addressRepository.findById(addressId).orElseThrow(NoSuchElementException::new);
         setAddressFields(address,road,roadNumber,postalCode,city,country);
         addressRepository.save(address);
-        return AddressMapper.INSTANCE.addressDTO(address);
+        return AddressMapper.INSTANCE.addressToDTO(address);
     }
 
     private User findUserById(Long id){

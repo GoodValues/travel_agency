@@ -34,6 +34,18 @@ public class Ordero {
     @OneToOne
     private Trip trip;
 
+    public Ordero(Long id, BigDecimal balance, OrderStatusEnum status, List<Participant> participants, User user, Trip trip) {
+        this.id = id;
+        this.balance = balance;
+        this.status = status;
+        this.participants = participants;
+        this.user = user;
+        this.trip = trip;
+    }
+
+    public Ordero() {
+    }
+
     public Long getId() {
         return id;
     }

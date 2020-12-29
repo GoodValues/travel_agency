@@ -10,10 +10,6 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Data
-@EqualsAndHashCode
-@AllArgsConstructor
-@NoArgsConstructor
 @Table(name = "participant")
 public class Participant {
 
@@ -29,6 +25,20 @@ public class Participant {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="ordero_id")
     private Ordero ordero;
+
+    public Participant(Long id, String firstName, String lastName, String address, String email, Long pesel, LocalDate dateOfBirth, Ordero ordero) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.email = email;
+        this.pesel = pesel;
+        this.dateOfBirth = dateOfBirth;
+        this.ordero = ordero;
+    }
+
+    public Participant() {
+    }
 
     public Long getId() {
         return id;

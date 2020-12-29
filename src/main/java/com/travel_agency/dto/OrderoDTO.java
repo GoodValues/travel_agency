@@ -10,17 +10,26 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@EqualsAndHashCode
-public class OrderDTO {
+
+public class OrderoDTO {
     private Long id;
     private TripDTO tripDTO;
-    private List<ParticipantsDTO> participants = new ArrayList<>();
+    private List<ParticipantDTO> participants = new ArrayList<>();
     private BigDecimal balance;
     private UserDTO userDTO;
     private OrderStatusEnum orderStatusEnum;
+
+    public OrderoDTO(Long id, TripDTO tripDTO, List<ParticipantDTO> participants, BigDecimal balance, UserDTO userDTO, OrderStatusEnum orderStatusEnum) {
+        this.id = id;
+        this.tripDTO = tripDTO;
+        this.participants = participants;
+        this.balance = balance;
+        this.userDTO = userDTO;
+        this.orderStatusEnum = orderStatusEnum;
+    }
+
+    public OrderoDTO() {
+    }
 
     public Long getId() {
         return id;
@@ -38,11 +47,11 @@ public class OrderDTO {
         this.tripDTO = tripDTO;
     }
 
-    public List<ParticipantsDTO> getParticipants() {
+    public List<ParticipantDTO> getParticipants() {
         return participants;
     }
 
-    public void setParticipants(List<ParticipantsDTO> participants) {
+    public void setParticipants(List<ParticipantDTO> participants) {
         this.participants = participants;
     }
 

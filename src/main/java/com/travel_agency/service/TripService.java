@@ -36,18 +36,13 @@ public class TripService {
     public TripDTO getTripById(Long id) {
         Optional<Trip> trip = tripRepository.findById(id);
 
-        BigDecimal tripPriceAdult = trip.orElse(null).getPriceForAdult();
-
-        if (trip.get().getTripType().name().equals("SUMMER"))
-            trip.get().setPriceForAdult(tripPriceAdult.multiply(BigDecimal.valueOf(0.9)));
-        if (trip.get().getTripType().name().equals("WINTER"))
-            trip.get().setPriceForAdult(tripPriceAdult.multiply(BigDecimal.valueOf(0.8)));
+        BigDecimal tripPriceAdult = trip.orElseThrow(() -> new NullPointerException("No trip with such id")).getPriceForAdult();
 
         return trip.map(TripMapper.INSTANCE::tripToDto).orElse(null);
     }
 
     public List<TripDTO> getTripsForUser(Long userId) {
-        List<Trip> trips = userRepository.findById(userId).orElse(null).getTrips();
+        List<Trip> trips = userRepository.findById(userId).orElseThrow(() -> new NullPointerException("There is no trips for user with given id")).getTrips();
         List<TripDTO> result = new ArrayList<>();
         for (Trip trip : trips)
             result.add(TripMapper.INSTANCE.tripToDto(trip));

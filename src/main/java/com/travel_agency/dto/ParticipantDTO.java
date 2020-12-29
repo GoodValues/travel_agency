@@ -7,10 +7,6 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@EqualsAndHashCode
 public class ParticipantDTO {
 
     private Long id;
@@ -20,6 +16,19 @@ public class ParticipantDTO {
     private String email;
     private long pesel;
     private LocalDate dateOfBirth;
+
+    public ParticipantDTO(Long id, String firstName, String lastName, String address, String email, long pesel, LocalDate dateOfBirth) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.email = email;
+        this.pesel = pesel;
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public ParticipantDTO() {
+    }
 
     public Long getId() {
         return id;
