@@ -7,10 +7,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@EqualsAndHashCode
+
 public class AddressDTO {
 
 
@@ -21,6 +18,19 @@ public class AddressDTO {
     private String city;
     private String country;
     private User user;
+
+    public AddressDTO(Long id, String road, Long roadNumber, String postalCode, String city, String country, User user) {
+        this.id = id;
+        this.road = road;
+        this.roadNumber = roadNumber;
+        this.postalCode = postalCode;
+        this.city = city;
+        this.country = country;
+        this.user = user;
+    }
+
+    public AddressDTO() {
+    }
 
     public Long getId() {
         return id;

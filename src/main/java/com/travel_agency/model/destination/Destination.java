@@ -6,7 +6,9 @@ import com.travel_agency.model.trip.Trip;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
@@ -16,9 +18,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
-@EqualsAndHashCode
 @Table(name = "destination")
 public class Destination {
 
@@ -49,6 +48,19 @@ public class Destination {
     @LazyCollection(LazyCollectionOption.FALSE)
     @JsonIgnore
     private List<Trip> trips = new ArrayList<>();
+
+    public Destination(Long id, @NotEmpty String continent, @NotEmpty String country, @NotEmpty String city, @NotEmpty String airport, List<Hotel> hotels, List<Trip> trips) {
+        this.id = id;
+        this.continent = continent;
+        this.country = country;
+        this.city = city;
+        this.airport = airport;
+        this.hotels = hotels;
+        this.trips = trips;
+    }
+
+    public Destination() {
+    }
 
     public Long getId() {
         return id;
