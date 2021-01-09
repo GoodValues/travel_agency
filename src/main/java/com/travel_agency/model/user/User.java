@@ -31,6 +31,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @EqualsAndHashCode
@@ -50,6 +51,10 @@ public class User {
     private String lastName;
 
     @Column(nullable = false)
+    @Size(min=1)
+    private String userName;
+
+    @Column(nullable = false)
     @Email
     private String email;
 
@@ -58,6 +63,9 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     private UserRoleNameEnum roleName;
+
+    @ManyToMany
+    private Set<Role> roles;
 
     @ManyToMany(fetch = FetchType.LAZY,
             cascade = {
@@ -79,7 +87,7 @@ public class User {
     @JoinColumn(name = "address_id")
     private Address address;
 
-    public User(Long id, @Size(min = 1) String firstName, @Size(min = 1) String lastName, @Email String email, String password, String confirmPassword, UserRoleNameEnum roleName, List<Trip> trips, List<Reservation> reservations, Address address) {
+    public User(Long id, @Size(min = 1) String firstName, @Size(min = 1) String lastName, @Email String email, String password, String confirmPassword, UserRoleNameEnum roleName, Set<Role> roles, List<Trip> trips, List<Reservation> reservations, Address address) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -87,13 +95,25 @@ public class User {
         this.password = password;
         this.confirmPassword = confirmPassword;
         this.roleName = roleName;
+        this.roles = roles;
         this.trips = trips;
         this.reservations = reservations;
         this.address = address;
     }
 
+    public User(@Size(min = 1) String firstName, @Size(min = 1) String lastName, @Size(min = 1) String userName, @Email String email, String password, String confirmPassword) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.userName = userName;
+        this.email = email;
+        this.password = password;
+        this.confirmPassword = confirmPassword;
+    }
+
     public User() {
     }
+
+
 
     public Long getId() {
         return id;
@@ -173,5 +193,22 @@ public class User {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 }

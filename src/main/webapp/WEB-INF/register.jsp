@@ -58,6 +58,12 @@
         </div>
 
         <div class="form-group">
+            <label>User Name</label>
+            <form:input path="userName" placeholder="Username" type="text" class="form-control" />
+            <form:errors path="userName" style="color:red" class="form-text text-muted" />
+        </div>
+
+        <div class="form-group">
             <label>Password</label>
             <form:input path="password" placeholder="Password" type="password" class="form-control" />
             <form:errors path="password" style="color:red" class="form-text text-muted" />
