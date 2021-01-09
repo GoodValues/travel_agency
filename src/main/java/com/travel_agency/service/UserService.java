@@ -39,6 +39,10 @@ public class UserService {
         userRepository.save(user);
     }
 
+    public User getUserbyUsername (String username) throws Exception {
+        return userRepository.findByUserName(username).orElseThrow(() -> new Exception("User not found: " + username));
+    }
+
     public void deleteUser(Long id) {
         userRepository.deleteById(id);
     }

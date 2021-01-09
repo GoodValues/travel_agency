@@ -1,9 +1,13 @@
 package com.travel_agency.controller;
 
+import com.travel_agency.dto.LoginDTO;
 import com.travel_agency.dto.UserDTO;
 import com.travel_agency.model.user.User;
 import com.travel_agency.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -30,11 +34,18 @@ public class UserController {
         this.userService = userService;
     }
 
+
+//    @ModelAttribute("user") LoginDTO loginDTO,
+
     @GetMapping("/")
-    public String index(Model model, @ModelAttribute("user") UserDTO userDTO, BindingResult bindingResult) {
+    public String index(Model model) {
+
+        Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
+        String username = loggedInUser.getName();
+
         model.addAttribute("dateTime", LocalDateTime.now());
         model.addAttribute("visitCount", ++count);
-        model.addAttribute("userName", userDTO.getEmail());
+        model.addAttribute("userName", username);
         return "index";
     }
 
