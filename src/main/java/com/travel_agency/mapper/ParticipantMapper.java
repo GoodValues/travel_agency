@@ -5,6 +5,9 @@ import com.travel_agency.model.participant.Participant;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
+import javax.annotation.processing.SupportedSourceVersion;
+import javax.lang.model.SourceVersion;
+
 @Mapper
 public interface ParticipantMapper {
 
