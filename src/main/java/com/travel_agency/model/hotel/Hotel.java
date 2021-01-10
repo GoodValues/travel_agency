@@ -14,10 +14,6 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Data
-@EqualsAndHashCode
-@AllArgsConstructor
-@NoArgsConstructor
 @Table(name = "hotel")
 public class Hotel {
 
@@ -46,6 +42,19 @@ public class Hotel {
             joinColumns = @JoinColumn(name = "hotel_id"),
             inverseJoinColumns = @JoinColumn(name = "trip_id"))
     private List<Trip> trips = new ArrayList<>();
+
+    public Hotel(Long id, @NotEmpty String name, HotelStandardEnum standard, String location, String description, Destination destination, List<Trip> trips) {
+        this.id = id;
+        this.name = name;
+        this.standard = standard;
+        this.location = location;
+        this.description = description;
+        this.destination = destination;
+        this.trips = trips;
+    }
+
+    public Hotel() {
+    }
 
     public Long getId() {
         return id;

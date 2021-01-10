@@ -8,7 +8,5 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 public interface HotelRepository extends JpaRepository<Hotel, Long> {
-
-    List<Hotel> findAllByHotelStandardEnum(String standard);
-
+    List<Hotel> findByStandard(String standard);
 }

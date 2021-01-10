@@ -42,14 +42,14 @@
     <form:form method="post" modelAttribute="user">
 
         <div class="form-group">
-            <label>Email</label>
-            <form:input path="email" placeholder="email" type="text" class="form-control" />
-            <form:errors path="email" style="color:red" class="form-text text-muted" />
+            <label>Username</label>
+            <form:input path="userName" placeholder="userName" type="text" class="form-control" />
+            <form:errors path="userName" style="color:red" class="form-text text-muted" />
         </div>
 
         <div class="form-group">
             <label>Password</label>
-            <form:input path="password" placeholder="Password" type="password" class="form-control" />
+            <form:input path="password" placeholder="password" type="password" class="form-control" />
             <form:errors path="password" style="color:red" class="form-text text-muted" />
         </div>
         <form:button type="submit" class="btn btn-primary">Login</form:button>

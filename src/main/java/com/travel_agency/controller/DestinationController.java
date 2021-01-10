@@ -5,12 +5,19 @@ import com.travel_agency.dto.HotelDTO;
 import com.travel_agency.dto.TripDTO;
 import com.travel_agency.service.DestinationService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@RestController
-@RequestMapping("")
+@Controller
 public class DestinationController {
 
     DestinationService destinationService;
@@ -42,6 +49,7 @@ public class DestinationController {
         destinationService.editAndSaveDestination(id, destinationDTO);
     }
 
+    @ResponseBody
     @GetMapping("/destination/{id}/trips")
     public List<TripDTO> getTripsForDestination(@PathVariable Long id){
         return destinationService.getTripsForDestination(id);
@@ -52,11 +60,9 @@ public class DestinationController {
         destinationService.saveDestination(destinationDTO);
     }
 
+    @ResponseBody
     @GetMapping("/destination/{id}/hotels")
     public List<HotelDTO> getHotelsForDestination(@PathVariable Long id){
         return destinationService.getHotelsForDestination(id);
     }
-
-
-
 }

@@ -32,15 +32,17 @@ insert into hotel(id, name, standard, location, description, destination_id) VAL
 (7, 'Noclegownia', 'TWO_STAR', 'Bangkok', 'Dobry na tanie nocowanie', 3),
 (8, 'Hotel Manhattan', 'FOUR_STAR', 'Nowy Jork', 'Dobre miejsce do nocowania w Nowym Jorku', 4);
 
-insert into user(id, first_name, last_name, email, password, confirm_password, role_name, address_id) VALUES
-(1, 'Jan','Kowalski', 'jan.kowalski@gmail.com', 'janek1234', 'janek1234','USER', 1),
-(2, 'Agata','Nowak', 'agata.nowak@gmail.com', 'agatka1234', 'agatka1234','ADMIN', 2),
-(3, 'Marian','Pawlak', 'marian.pawlak@gmail.com', 'marian1234', 'marian1234','USER', 3),
-(4, 'Karolina','Pisarek', 'karolina.pisarek@gmail.com', 'karolina1234', 'karolina1234','USER', 4),
-(5, 'Stefan','Boczek', 'stefan.boczek@gmail.com', 'stefan1234', 'stefan1234','ADMIN', 5),
-(6, 'Anna','Szarek', 'anna.szarek@gmail.com', 'anna1234', 'anna1234','USER', 6),
-(7, 'Karol','Szepietowski', 'karol.szepietowski@gmail.com', 'karol1234', 'karol1234','ADMIN', 7),
-(8, 'Genowefa','Pigwa', 'genowefa.pigwa@gmail.com', 'genowefa1234', 'genowefa1234','USER', 8);
+insert into user(id, first_name, last_name, user_name, email, password, confirm_password, role_name, address_id) VALUES
+(1, 'Jan','Kowalski', 'kowal', 'jan.kowalski@gmail.com', 'janek1234', 'janek1234','ROLE_USER', 1),
+(2, 'Agata','Nowak', 'nowak', 'agata.nowak@gmail.com', 'agatka1234', 'agatka1234','ROLE_ADMIN', 2),
+(3, 'Marian','Pawlak', 'pawlak', 'marian.pawlak@gmail.com', 'marian1234', 'marian1234','ROLE_USER', 3),
+(4, 'Karolina','Pisarek', 'pisar', 'karolina.pisarek@gmail.com', 'karolina1234', 'karolina1234','ROLE_USER', 4),
+(5, 'Stefan','Boczek', 'boczek', 'stefan.boczek@gmail.com', 'stefan1234', 'stefan1234','ROLE_ADMIN', 5),
+(6, 'Anna','Szarek', 'szara', 'anna.szarek@gmail.com', 'anna1234', 'anna1234','ROLE_USER', 6),
+(7, 'Karol','Szepietowski', 'szepieto', 'karol.szepietowski@gmail.com', 'karol1234', 'karol1234','ROLE_ADMIN', 7),
+(8, 'Genowefa','Pigwa', 'pigwa', 'genowefa.pigwa@gmail.com', 'genowefa1234', 'genowefa1234','ROLE_USER', 8);
+
+insert into roles (name) VALUES ('ROLE_USER'), ('ROLE_ADMIN');
 
 
 insert into hotel_trip(hotel_id, trip_id) VALUES

@@ -4,12 +4,13 @@ import com.travel_agency.dto.DestinationDTO;
 import com.travel_agency.model.destination.Destination;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
+
 @Mapper
 public interface DestinationMapper {
 
-    static DestinationMapper INSTANCE = Mappers.getMapper(DestinationMapper.class);
+    DestinationMapper INSTANCE = Mappers.getMapper(DestinationMapper.class);
 
-    DestinationDTO destinationDTO(Destination destination);
+    DestinationDTO destinationToDTO(Destination destination);
     Destination dtoToDestination(DestinationDTO destinationDTO);
 
 

@@ -9,11 +9,9 @@ import com.travel_agency.repository.HotelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @Service
 public class HotelService {
@@ -24,14 +22,6 @@ public class HotelService {
     public HotelService(HotelRepository hotelRepository) {
         this.hotelRepository = hotelRepository;
     }
-
-    //    public List<HotelDTO> getAllHotels() {
-//        List<Hotel> hotels = hotelRepository.findAll();
-//        List<HotelDTO> result = new ArrayList<>();
-//        for (Hotel hotel : hotels)
-//            result.add(HotelMapper.INSTANCE.hotelDto(hotel));
-//        return result;
-//    }
 
 
     public List<HotelDTO> getAllHotels(){    //uwazam ze ten zapis ze streamem a bez petli jest zgodny z aktualnym clean code
@@ -53,7 +43,7 @@ public class HotelService {
     }
 
     public List<HotelDTO> getHotelsByStandard(String standard){
-        return hotelRepository.findAllByHotelStandardEnum(standard)
+        return hotelRepository.findByStandard(standard)
                 .stream()
                 .map(HotelMapper.INSTANCE::hotelDto)
                 .collect(Collectors.toList());
@@ -67,7 +57,7 @@ public class HotelService {
     public void editAndSaveHotel(Long id, HotelDTO hotelDTO){
         Hotel hotel = hotelRepository.findById(id).orElseThrow(NoSuchElementException::new);
         hotel.setName(hotelDTO.getName());
-        hotel.setStandard(hotelDTO.getHotelStandardEnum());
+        hotel.setStandard(hotelDTO.getStandard());
         hotel.setLocation(hotelDTO.getLocation());
         hotel.setDescription(hotelDTO.getDescription());
         hotelRepository.save(hotel);
@@ -77,9 +67,4 @@ public class HotelService {
         Hotel hotel = hotelRepository.findById(id).orElseThrow(NoSuchElementException::new);
         hotelRepository.delete(hotel);
     }
-
-
-
-
-
 }

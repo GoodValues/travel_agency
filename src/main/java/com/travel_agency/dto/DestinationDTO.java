@@ -8,10 +8,7 @@ import lombok.NoArgsConstructor;
 import java.util.ArrayList;
 import java.util.List;
 
-@AllArgsConstructor
-@NoArgsConstructor
 @EqualsAndHashCode
-@Data
 public class DestinationDTO {
     private Long id;
     private String continentName;
@@ -20,6 +17,19 @@ public class DestinationDTO {
     private String airportName;
     private List<HotelDTO> hotels;
     private List<TripDTO> trips = new ArrayList<>();
+
+    public DestinationDTO(Long id, String continentName, String countryName, String cityName, String airportName, List<HotelDTO> hotels, List<TripDTO> trips) {
+        this.id = id;
+        this.continentName = continentName;
+        this.countryName = countryName;
+        this.cityName = cityName;
+        this.airportName = airportName;
+        this.hotels = hotels;
+        this.trips = trips;
+    }
+
+    public DestinationDTO() {
+    }
 
     public Long getId() {
         return id;

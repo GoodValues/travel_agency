@@ -19,7 +19,6 @@ import java.util.stream.Collectors;
 
 @Service
 public class DestinationService {
-
     DestinationRepository destinationRepository;
 
     @Autowired
@@ -29,14 +28,14 @@ public class DestinationService {
 
     public DestinationDTO getDestinationById(Long id) {
         return destinationRepository.findById(id)
-                .map(DestinationMapper.INSTANCE::destinationDTO)
+                .map(DestinationMapper.INSTANCE::destinationToDTO)
                 .orElseThrow(NoSuchElementException::new);
     }
 
     public List<DestinationDTO> getAllDestinations() {
         return destinationRepository.findAll()
                 .stream()
-                .map(DestinationMapper.INSTANCE::destinationDTO)
+                .map(DestinationMapper.INSTANCE::destinationToDTO)
                 .collect(Collectors.toList());
     }
 
@@ -76,7 +75,4 @@ public class DestinationService {
         Destination destination = destinationRepository.findById(id).orElseThrow(NoSuchElementException::new);
         destinationRepository.delete(destination);
     }
-
-
-
 }

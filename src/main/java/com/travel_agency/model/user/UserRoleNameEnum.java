@@ -2,8 +2,8 @@ package com.travel_agency.model.user;
 
 public enum UserRoleNameEnum {
 
-    USER("USER"),
-    ADMIN("ADMIN");
+    ROLE_USER("ROLE_USER"),
+    ROLE_ADMIN("ROLE_ADMIN");
 
 
     private String message;

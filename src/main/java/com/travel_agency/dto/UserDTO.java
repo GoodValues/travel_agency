@@ -2,6 +2,7 @@ package com.travel_agency.dto;
 
 import com.travel_agency.model.address.Address;
 import com.travel_agency.model.reservation.Reservation;
+import com.travel_agency.model.user.Role;
 import com.travel_agency.model.user.UserRoleNameEnum;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -9,6 +10,7 @@ import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @EqualsAndHashCode
 public class UserDTO {
@@ -16,25 +18,30 @@ public class UserDTO {
     private Long id;
     private String firstName;
     private String lastName;
+    private String userName;
     private String email;
     private String password;
     private String confirmPassword;
     private UserRoleNameEnum roleName;
+    private Set<Role> roles;
     private List<TripDTO> trips = new ArrayList<>();
     private final List<Reservation> reservations = new ArrayList<>();
     private Address address;
 
-    public UserDTO(Long id, String firstName, String lastName, String email, String password, String confirmPassword, UserRoleNameEnum roleName, List<TripDTO> trips, Address address) {
+    public UserDTO(Long id, String firstName, String lastName, String userName, String email, String password, String confirmPassword, UserRoleNameEnum roleName, Set<Role> roles, List<TripDTO> trips, Address address) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.userName = userName;
         this.email = email;
         this.password = password;
         this.confirmPassword = confirmPassword;
         this.roleName = roleName;
+        this.roles = roles;
         this.trips = trips;
         this.address = address;
     }
+
 
     public UserDTO() {
     }
@@ -113,5 +120,21 @@ public class UserDTO {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 }
