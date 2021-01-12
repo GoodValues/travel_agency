@@ -1,8 +1,8 @@
-package com.travel_agency.configuaration;
+package com.travel_agency.security.configuaration;
 
-import com.travel_agency.configuaration.token.JwtAuthEntryPoint;
-import com.travel_agency.configuaration.token.JwtAuthFilter;
-import com.travel_agency.configuaration.token.JwtProvider;
+import com.travel_agency.security.configuaration.token.JwtAuthEntryPoint;
+import com.travel_agency.security.configuaration.token.JwtAuthFilter;
+import com.travel_agency.security.configuaration.token.JwtProvider;
 import com.travel_agency.service.security.TAUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

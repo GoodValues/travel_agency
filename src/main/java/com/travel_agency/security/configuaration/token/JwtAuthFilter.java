@@ -1,4 +1,4 @@
-package com.travel_agency.configuaration.token;
+package com.travel_agency.security.configuaration.token;
 
 import com.travel_agency.service.security.TAUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;

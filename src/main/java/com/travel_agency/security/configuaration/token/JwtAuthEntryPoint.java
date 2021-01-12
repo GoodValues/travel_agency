@@ -1,4 +1,4 @@
-package com.travel_agency.configuaration.token;
+package com.travel_agency.security.configuaration.token;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

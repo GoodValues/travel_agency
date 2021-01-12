@@ -1,4 +1,4 @@
-package com.travel_agency.service.security;
+package com.travel_agency.security.service;
 
 import com.travel_agency.model.user.User;
 import org.springframework.security.core.GrantedAuthority;
@@ -7,7 +7,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class TutorialUser implements UserDetails {
