@@ -1,11 +1,6 @@
 package com.travel_agency.dto;
 
-import com.travel_agency.model.user.User;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import com.travel_agency.security.DTO.User;
 
 
 public class AddressDTO {

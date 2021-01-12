@@ -1,6 +1,7 @@
-package com.travel_agency.configuaration.token;
+package com.travel_agency.security.configuaration.token;
 
-import com.travel_agency.service.security.TAUserDetailsService;
+import com.travel_agency.security.service.TAUserDetailsService;
+import com.travel_agency.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -35,6 +36,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
             UserDetails userDetails = userDetailsService.loadUserByUsername(username);
             UsernamePasswordAuthenticationToken authenticationToken =
                     new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+
             authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(httpServletRequest));
             SecurityContextHolder.getContext().setAuthentication(authenticationToken);
         }

@@ -1,6 +1,6 @@
-package com.travel_agency.configuaration.token;
+package com.travel_agency.security.configuaration.token;
 
-import com.travel_agency.service.security.TutorialUser;
+import com.travel_agency.security.service.TutorialUser;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.MalformedJwtException;

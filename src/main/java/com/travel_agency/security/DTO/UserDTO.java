@@ -1,12 +1,11 @@
-package com.travel_agency.dto;
+package com.travel_agency.security.DTO;
 
+import com.travel_agency.dto.TripDTO;
 import com.travel_agency.model.address.Address;
 import com.travel_agency.model.reservation.Reservation;
-import com.travel_agency.model.user.Role;
-import com.travel_agency.model.user.UserRoleNameEnum;
-import lombok.AllArgsConstructor;
+import com.travel_agency.security.DTO.Role;
+import com.travel_agency.security.DTO.UserRoleNameEnum;
 import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,6 +43,12 @@ public class UserDTO {
 
 
     public UserDTO() {
+    }
+
+    public UserDTO(String userName, String email, String password) {
+        this.userName = userName;
+        this.email = email;
+        this.password = password;
     }
 
     public Long getId() {

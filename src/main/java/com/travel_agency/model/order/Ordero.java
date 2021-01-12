@@ -2,7 +2,7 @@ package com.travel_agency.model.order;
 
 import com.travel_agency.model.participant.Participant;
 import com.travel_agency.model.trip.Trip;
-import com.travel_agency.model.user.User;
+import com.travel_agency.security.DTO.User;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;

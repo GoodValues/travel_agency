@@ -1,10 +1,7 @@
 package com.travel_agency.dto;
 
 import com.travel_agency.model.order.OrderStatusEnum;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import com.travel_agency.security.DTO.UserDTO;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package com.travel_agency.configuaration;
+package com.travel_agency.security.configuaration;
 
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Configuration;

@@ -1,6 +1,6 @@
 package com.travel_agency.repository;
 
-import com.travel_agency.model.user.User;
+import com.travel_agency.security.DTO.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
