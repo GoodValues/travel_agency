@@ -3,12 +3,10 @@ package com.travel_agency.model.trip;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.travel_agency.model.destination.Destination;
 import com.travel_agency.model.hotel.Hotel;
-import com.travel_agency.model.user.User;
+import com.travel_agency.security.DTO.User;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.boot.convert.DurationUnit;
 import org.springframework.format.annotation.DateTimeFormat;
 

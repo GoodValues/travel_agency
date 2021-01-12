@@ -5,7 +5,7 @@ import com.travel_agency.model.hotel.Hotel;
 import com.travel_agency.model.trip.TripAlimentationEnum;
 import com.travel_agency.model.trip.TripStatusEnum;
 import com.travel_agency.model.trip.TripTypeEnum;
-import com.travel_agency.model.user.User;
+import com.travel_agency.security.DTO.User;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;

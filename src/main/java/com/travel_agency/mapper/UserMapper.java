@@ -1,12 +1,9 @@
 package com.travel_agency.mapper;
 
-import com.travel_agency.dto.UserDTO;
-import com.travel_agency.model.user.User;
+import com.travel_agency.security.DTO.UserDTO;
+import com.travel_agency.security.DTO.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
-
-import javax.annotation.processing.SupportedSourceVersion;
-import javax.lang.model.SourceVersion;
 
 @Mapper
 public interface UserMapper {

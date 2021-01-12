@@ -1,8 +1,8 @@
-package com.travel_agency.login;
+package com.travel_agency.security.controllers;
 
 import com.travel_agency.security.configuaration.token.JwtProvider;
-import com.travel_agency.dto.LoginDTO;
-import com.travel_agency.dto.UserDTO;
+import com.travel_agency.security.DTO.LoginDTO;
+import com.travel_agency.security.DTO.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.security.authentication.AuthenticationManager;

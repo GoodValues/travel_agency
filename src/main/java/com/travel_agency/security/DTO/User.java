@@ -1,14 +1,10 @@
-package com.travel_agency.model.user;
+package com.travel_agency.security.DTO;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.travel_agency.model.address.Address;
 import com.travel_agency.model.reservation.Reservation;
 import com.travel_agency.model.trip.Trip;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
@@ -113,7 +109,11 @@ public class User {
     public User() {
     }
 
-
+    public User(@Size(min = 1) String userName, @Email String email, String password) {
+        this.userName = userName;
+        this.email = email;
+        this.password = password;
+    }
 
     public Long getId() {
         return id;

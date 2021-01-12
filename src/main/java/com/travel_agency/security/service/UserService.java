@@ -1,8 +1,8 @@
-package com.travel_agency.service;
+package com.travel_agency.security.service;
 
-import com.travel_agency.dto.UserDTO;
+import com.travel_agency.security.DTO.UserDTO;
 import com.travel_agency.mapper.UserMapper;
-import com.travel_agency.model.user.User;
+import com.travel_agency.security.DTO.User;
 import com.travel_agency.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,11 +39,26 @@ public class UserService {
         userRepository.save(user);
     }
 
-    public User getUserbyUsername (String username) throws Exception {
+    public User getUserByUsername(String username) throws Exception {
         return userRepository.findByUserName(username).orElseThrow(() -> new Exception("User not found: " + username));
     }
 
     public void deleteUser(Long id) {
         userRepository.deleteById(id);
     }
+
+
+    public boolean ifUserExistsByUsername(String username){
+        return userRepository.existsByUserName(username);
+    }
+
+    public boolean ifUserExistsByEmail(String email){
+        return userRepository.existsByEmail(email);
+    }
+
+
+
+
+
 }
+

@@ -1,4 +1,4 @@
-package com.travel_agency.model.user;
+package com.travel_agency.security.DTO;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;

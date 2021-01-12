@@ -1,10 +1,9 @@
 package com.travel_agency.model.reservation;
 
-import com.travel_agency.model.user.User;
+import com.travel_agency.security.DTO.User;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;

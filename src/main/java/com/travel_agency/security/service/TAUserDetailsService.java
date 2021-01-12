@@ -1,7 +1,6 @@
 package com.travel_agency.security.service;
 
-import com.travel_agency.model.user.User;
-import com.travel_agency.service.UserService;
+import com.travel_agency.security.DTO.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -24,7 +23,7 @@ public class TAUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) {
         User user = null;
         try {
-            user = service.getUserbyUsername(username);
+            user = service.getUserByUsername(username);
         } catch (Exception e) {
             e.printStackTrace();
         }

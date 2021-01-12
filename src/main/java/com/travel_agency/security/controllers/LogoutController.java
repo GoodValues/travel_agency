@@ -1,4 +1,4 @@
-package com.travel_agency.login;
+package com.travel_agency.security.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

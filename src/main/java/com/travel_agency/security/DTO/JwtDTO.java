@@ -1,4 +1,4 @@
-package com.travel_agency.dto;
+package com.travel_agency.security.DTO;
 
 public class JwtDTO {
     private String token;
