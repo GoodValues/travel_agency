@@ -50,4 +50,11 @@ public class TripController {
     List<TripDTO> getTripsForUser(@PathVariable("id") Long id) {
         return tripService.getTripsForUser(id);
     }
+
+    @ResponseBody
+    @GetMapping(value="/counter/trip/{id}", produces = "application/json")
+    Integer getCounterForTripWithId(@PathVariable Long id) {
+        return tripService.getCounterForTripWithId(id);
+    }
+
 }

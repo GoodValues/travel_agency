@@ -42,6 +42,7 @@ public class Destination {
 
     @OneToMany(mappedBy = "destination",cascade = CascadeType.ALL)
     @LazyCollection(LazyCollectionOption.FALSE)
+    @JsonIgnore
     private List<Hotel> hotels= new ArrayList<>();
 
     @OneToMany(mappedBy = "destination", cascade = CascadeType.ALL)

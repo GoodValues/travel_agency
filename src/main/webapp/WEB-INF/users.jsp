@@ -18,6 +18,7 @@
         <th>Password</th>
         <th>Role</th>
         <th>City</th>
+        <th>Photo</th>
         <th>Trips</th>
         <th></th>
         <th></th>
@@ -31,6 +32,8 @@
             <td>${user.password}</td>
             <td>${user.roleName}</td>
             <td>${user.address.city}</td>
+<%--            <td><img th:src="/@{${user.photosImagePath}}" /></td>--%>
+            <td>${user.photos}</td>
             <td><a href="/getTripsForUser/${user.id}">Trips for user</a></td>
 
             <td><a href="/deleteUser?id=${user.id}">Usuń</a></td>

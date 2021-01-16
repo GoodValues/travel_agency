@@ -43,7 +43,7 @@
 </head>
 <body>
 <div style="margin: auto; width: 500px; padding-top: 50px">
-    <form:form method="post" modelAttribute="user">
+    <form:form method="post" modelAttribute="user" enctype="multipart/form-data">
 
         <div class="form-group">
             <label>First Name</label>
@@ -78,6 +78,10 @@
             <form:input path="email" placeholder="email" type="text" class="form-control" />
             <form:errors path="email" style="color:red" class="form-text text-muted" />
         </div>
+
+        <label>Photos: </label>
+        <input type="file" name="image" accept="image/png, image/jpeg" />
+
         <form:button type="submit" class="btn btn-success">Register</form:button>
     </form:form>
 </div>

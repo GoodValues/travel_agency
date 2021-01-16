@@ -1,9 +1,10 @@
-package com.travel_agency.security.DTO;
+package com.travel_agency.model.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.travel_agency.model.address.Address;
 import com.travel_agency.model.reservation.Reservation;
 import com.travel_agency.model.trip.Trip;
+import com.travel_agency.security.DTO.UserRoleNameEnum;
 import lombok.EqualsAndHashCode;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
@@ -23,6 +24,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
@@ -38,15 +40,15 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable=false)
+    @Column(nullable=true)
     @Size(min=1)
     private String firstName;
 
-    @Column(nullable=false)
+    @Column(nullable=true)
     @Size(min=1)
     private String lastName;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     @Size(min=1)
     private String userName;
 
@@ -83,10 +85,17 @@ public class User {
     @JoinColumn(name = "address_id")
     private Address address;
 
-    public User(Long id, @Size(min = 1) String firstName, @Size(min = 1) String lastName, @Email String email, String password, String confirmPassword, UserRoleNameEnum roleName, Set<Role> roles, List<Trip> trips, List<Reservation> reservations, Address address) {
+    @Column(nullable = true)
+    private String photos;
+
+    private String getPhotosImagePath;
+
+
+    public User(Long id, @Size(min = 1) String firstName, @Size(min = 1) String lastName, @Size(min = 1) String userName, @Email String email, String password, String confirmPassword, UserRoleNameEnum roleName, Set<Role> roles, List<Trip> trips, List<Reservation> reservations, Address address, String photos) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.userName = userName;
         this.email = email;
         this.password = password;
         this.confirmPassword = confirmPassword;
@@ -95,6 +104,7 @@ public class User {
         this.trips = trips;
         this.reservations = reservations;
         this.address = address;
+        this.photos = photos;
     }
 
     public User(@Size(min = 1) String firstName, @Size(min = 1) String lastName, @Size(min = 1) String userName, @Email String email, String password, String confirmPassword) {
@@ -210,5 +220,20 @@ public class User {
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public String getPhotos() {
+        return photos;
+    }
+
+    public void setPhotos(String photos) {
+        this.photos = photos;
+    }
+
+    @Transient
+    public String getPhotosImagePath() {
+        if (photos == null || id == null) return null;
+
+        return "/user-photos/" + id + "/" + photos;
     }
 }

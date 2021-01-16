@@ -5,7 +5,7 @@ import com.travel_agency.model.hotel.Hotel;
 import com.travel_agency.model.trip.TripAlimentationEnum;
 import com.travel_agency.model.trip.TripStatusEnum;
 import com.travel_agency.model.trip.TripTypeEnum;
-import com.travel_agency.security.DTO.User;
+import com.travel_agency.model.user.User;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -39,6 +39,8 @@ public class TripDTO {
 
     private List<User> users = new ArrayList<>();
     private List<Hotel> hotels = new ArrayList<>();
+
+    private Integer counter;
 
 
     public Long getId() {

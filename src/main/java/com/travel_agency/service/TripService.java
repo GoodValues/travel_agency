@@ -10,7 +10,9 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -18,6 +20,7 @@ public class TripService {
 
     TripRepository tripRepository;
     UserRepository userRepository;
+    private Map<Long, Integer> map = new HashMap<>();
 
     @Autowired
     public TripService(TripRepository tripRepository, UserRepository userRepository) {
@@ -34,6 +37,8 @@ public class TripService {
     }
 
     public TripDTO getTripById(Long id) {
+
+        setCounterValue(id);
         Optional<Trip> trip = tripRepository.findById(id);
 
         BigDecimal tripPriceAdult = trip.orElseThrow(() -> new NullPointerException("No trip with such id")).getPriceForAdult();
@@ -48,4 +53,36 @@ public class TripService {
             result.add(TripMapper.INSTANCE.tripToDto(trip));
         return result;
     }
+
+    private final String lock = new String("id");
+
+    public void setCounterValue(Long id) {
+        synchronized (lock) {
+            System.out.println("locking on :" + lock);
+            tripRepository.findById(id).ifPresent(trip -> {
+                incrementCounter(trip);
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                putInMap(trip);
+            });
+        }
+    }
+
+    private void incrementCounter(Trip trip) {
+        trip.setCounter(trip.getCounter() + 1);
+        tripRepository.save(trip);
+    }
+
+    private void putInMap(Trip trip) {
+        map.put(trip.getId(), trip.getCounter());
+    }
+
+    public Integer getCounterForTripWithId(Long id) {
+        return tripRepository.findById(id).get().getCounter();
+    }
+
+
 }

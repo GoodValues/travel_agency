@@ -1,6 +1,6 @@
 package com.travel_agency.security.service;
 
-import com.travel_agency.security.DTO.User;
+import com.travel_agency.model.user.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
