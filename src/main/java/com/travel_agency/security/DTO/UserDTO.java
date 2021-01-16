@@ -13,6 +13,7 @@ import java.util.Set;
 @EqualsAndHashCode
 public class UserDTO {
 
+
     private Long id;
     private String firstName;
     private String lastName;
