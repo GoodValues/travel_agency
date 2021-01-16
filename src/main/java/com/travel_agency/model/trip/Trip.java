@@ -3,10 +3,12 @@ package com.travel_agency.model.trip;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.travel_agency.model.destination.Destination;
 import com.travel_agency.model.hotel.Hotel;
-import com.travel_agency.security.DTO.User;
+import com.travel_agency.model.user.User;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.bind.DefaultValue;
 import org.springframework.boot.convert.DurationUnit;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -19,9 +21,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@EqualsAndHashCode
-@AllArgsConstructor
-@NoArgsConstructor //bez @Data
 @Table(name = "trip")
 public class Trip {
 
@@ -77,7 +76,11 @@ public class Trip {
     @JoinTable(name = "hotel_trip",
             joinColumns = @JoinColumn(name = "trip_id"),
             inverseJoinColumns = @JoinColumn(name = "hotel_id"))
+    @JsonIgnore
     private List<Hotel> hotels = new ArrayList<>();
+
+    @Value("0")
+    private Integer counter;
 
 
     public Long getId() {
@@ -192,4 +195,11 @@ public class Trip {
         this.hotels = hotels;
     }
 
+    public Integer getCounter() {
+        return counter;
+    }
+
+    public void setCounter(Integer counter) {
+        this.counter = counter;
+    }
 }

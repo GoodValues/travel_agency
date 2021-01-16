@@ -1,7 +1,7 @@
 package com.travel_agency.model.address;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.travel_agency.security.DTO.User;
+import com.travel_agency.model.user.User;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;

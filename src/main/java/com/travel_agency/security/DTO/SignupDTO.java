@@ -3,17 +3,18 @@ package com.travel_agency.security.DTO;
 import java.util.Set;
 
 public class SignupDTO {
-    private String username;
+    private String userName;
     private String email;
     private String password;
     private Set<String> roles;
 
-    public String getUsername() {
-        return username;
+
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getEmail() {

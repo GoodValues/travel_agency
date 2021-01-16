@@ -1,7 +1,7 @@
 package com.travel_agency.mapper;
 
 import com.travel_agency.security.DTO.UserDTO;
-import com.travel_agency.security.DTO.User;
+import com.travel_agency.model.user.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 

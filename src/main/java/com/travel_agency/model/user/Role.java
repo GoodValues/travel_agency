@@ -1,4 +1,6 @@
-package com.travel_agency.security.DTO;
+package com.travel_agency.model.user;
+
+import com.travel_agency.security.DTO.UserRoleNameEnum;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;

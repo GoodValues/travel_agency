@@ -3,7 +3,7 @@ package com.travel_agency.service;
 import com.travel_agency.dto.AddressDTO;
 import com.travel_agency.mapper.AddressMapper;
 import com.travel_agency.model.address.Address;
-import com.travel_agency.security.DTO.User;
+import com.travel_agency.model.user.User;
 import com.travel_agency.repository.AddressRepository;
 import com.travel_agency.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

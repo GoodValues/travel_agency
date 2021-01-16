@@ -1,6 +1,6 @@
 package com.travel_agency.security.service;
 
-import com.travel_agency.security.DTO.User;
+import com.travel_agency.model.user.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

@@ -1,4 +1,4 @@
-package com.travel_agency.security.configuaration;
+package com.travel_agency.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

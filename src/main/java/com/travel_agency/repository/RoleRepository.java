@@ -1,6 +1,6 @@
 package com.travel_agency.repository;
 
-import com.travel_agency.security.DTO.Role;
+import com.travel_agency.model.user.Role;
 import com.travel_agency.security.DTO.UserRoleNameEnum;
 import org.springframework.data.jpa.repository.JpaRepository;
 

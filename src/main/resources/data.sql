@@ -1,9 +1,9 @@
-insert into trip(id, date_from, date_to, duration, adult_price, child_price, trip_type,  alimentation, description, status, people_limit, destination_id) VALUES
-(1, '2021-01-20', '2020-01-30', 10, 120, 100, 'WINTER', 'AI', 'Zimowy wyjazd', 'ACTIVE', 20, 1),
-(2, '2021-05-15', '2020-05-20', 5, 110, 90, 'SUMMER', 'HB', 'Fajny majowy urlop', 'ACTIVE', 30, 2),
-(3, '2021-07-10', '2020-07-21', 11, 150, 130, 'ROUND_TRIP', 'FB', 'urlop wakacyjny', 'PROMOTED', 10, 3),
-(4, '2021-04-7', '2020-04-14', 7, 90, 80, 'LAST_MINUTE', 'SC', 'Wyjazd wczesną wiosną', 'EXPIRED', 20, 4),
-(5, '2021-09-8', '2020-09-16', 8, 129, 115, 'ROUND_TRIP', 'AI', 'Wypadzik wrześniowy', 'ACTIVE', 8, 5);
+insert into trip(id, counter, date_from, date_to, duration, adult_price, child_price, trip_type,  alimentation, description, status, people_limit, destination_id) VALUES
+(1, 0,  '2021-01-20', '2020-01-30', 10, 120, 100, 'WINTER', 'AI', 'Zimowy wyjazd', 'ACTIVE', 20, 1),
+(2, 0, '2021-05-15', '2020-05-20', 5, 110, 90, 'SUMMER', 'HB', 'Fajny majowy urlop', 'ACTIVE', 30, 2),
+(3, 0, '2021-07-10', '2020-07-21', 11, 150, 130, 'ROUND_TRIP', 'FB', 'urlop wakacyjny', 'PROMOTED', 10, 3),
+(4, 0, '2021-04-7', '2020-04-14', 7, 90, 80, 'LAST_MINUTE', 'SC', 'Wyjazd wczesną wiosną', 'EXPIRED', 20, 4),
+(5, 0, '2021-09-8', '2020-09-16', 8, 129, 115, 'ROUND_TRIP', 'AI', 'Wypadzik wrześniowy', 'ACTIVE', 8, 5);
 
 insert into address(id, road, road_number, postal_code, city, country) VALUES
 (1, 'Marszałkowska', 12, '02-497', 'Warszawa', 'Polska'),

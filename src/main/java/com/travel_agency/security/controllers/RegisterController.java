@@ -1,18 +1,29 @@
 package com.travel_agency.security.controllers;
 
+import com.travel_agency.mapper.UserMapper;
+import com.travel_agency.model.user.Role;
+import com.travel_agency.model.user.User;
 import com.travel_agency.security.DTO.*;
 import com.travel_agency.repository.RoleRepository;
 import com.travel_agency.repository.UserRepository;
 import com.travel_agency.security.service.RoleService;
 import com.travel_agency.security.service.UserService;
+import com.travel_agency.utils.FileUploadUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.HashSet;
+import java.util.Objects;
 
 @Controller
 public class RegisterController {
@@ -33,52 +44,61 @@ public class RegisterController {
     private PasswordEncoder passwordEncoder;
 
     @PostMapping("/register")
-    public String registerUser(@RequestBody SignupDTO signupDTO, Model model) {
+    public String registerUser(@ModelAttribute UserDTO userDTO, Model model, @RequestParam("image") MultipartFile multipartFile) throws IOException {
 
-        if (userService.ifUserExistsByUsername(signupDTO.getUsername())) {
+        if (userService.ifUserExistsByUsername(userDTO.getUserName())) {
             model.addAttribute("message", "Username already exists");
             return "errorPage";
         }
-        if (userService.ifUserExistsByUsername(signupDTO.getEmail())) {
+        if (userService.ifUserExistsByUsername(userDTO.getEmail())) {
             model.addAttribute("message", "Email already added");
             return "errorPage";
         }
 
-        UserDTO userDTO = new UserDTO(signupDTO.getUsername(),
-                signupDTO.getEmail(), passwordEncoder.encode(signupDTO.getPassword()));
+        userDTO.setPassword(passwordEncoder.encode(userDTO.getPassword()));
 
-        HashSet<Role> roles = new HashSet<>();
+//        HashSet<Role> roles = new HashSet<>();
+//
+//        signupDTO.getRoles().forEach(role -> {
+//
+//            switch (role) {
+//                case "admin":
+//                    Role adminRole = roleService.findRoleByName(UserRoleNameEnum.ROLE_ADMIN);
+//                    roles.add(adminRole);
+//                    break;
+//                case "user":
+//                    Role userRole = roleService.findRoleByName(UserRoleNameEnum.ROLE_USER);
+//                    roles.add(userRole);
+//                    break;
+//            }
+//        });
+//
+//        userDTO.setRoles(roles);
 
-        signupDTO.getRoles().forEach(role -> {
-
-            switch (role) {
-                case "admin":
-                    Role adminRole = roleService.findRoleByName(UserRoleNameEnum.ROLE_ADMIN);
-                    roles.add(adminRole);
-                    break;
-                case "user":
-                    Role userRole = roleService.findRoleByName(UserRoleNameEnum.ROLE_USER);
-                    roles.add(userRole);
-                    break;
-            }
-        });
-
-        userDTO.setRoles(roles);
-        userService.saveUser(userDTO);
         model.addAttribute("userDTO", userDTO);
-        return "messagePage";
+
+        String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
+
+        userDTO.setPhotos(fileName);
+
+        String uploadDir = "user-photos/" + userDTO.getId();
+        FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+
+        userService.saveUser(userDTO);
+
+        return "redirect:/users";
 
     }
 
 
-//    @GetMapping(value = "/register")
-//    public String register(Model model) {
-//
-//        model.addAttribute("user", new UserDTO());
-//        return "register";
-//    }
-//
-//
+    @GetMapping(value = "/register")
+    public String register(Model model) {
+
+        model.addAttribute("user", new UserDTO());
+        return "register";
+    }
+
+
 
 
 //    @PostMapping(value = "/register")

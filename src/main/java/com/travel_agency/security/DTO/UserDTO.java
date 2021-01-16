@@ -3,8 +3,7 @@ package com.travel_agency.security.DTO;
 import com.travel_agency.dto.TripDTO;
 import com.travel_agency.model.address.Address;
 import com.travel_agency.model.reservation.Reservation;
-import com.travel_agency.security.DTO.Role;
-import com.travel_agency.security.DTO.UserRoleNameEnum;
+import com.travel_agency.model.user.Role;
 import lombok.EqualsAndHashCode;
 
 import java.util.ArrayList;
@@ -13,6 +12,7 @@ import java.util.Set;
 
 @EqualsAndHashCode
 public class UserDTO {
+
 
     private Long id;
     private String firstName;
@@ -26,8 +26,10 @@ public class UserDTO {
     private List<TripDTO> trips = new ArrayList<>();
     private final List<Reservation> reservations = new ArrayList<>();
     private Address address;
+    private String photos;
+    private String photosImagePath;
 
-    public UserDTO(Long id, String firstName, String lastName, String userName, String email, String password, String confirmPassword, UserRoleNameEnum roleName, Set<Role> roles, List<TripDTO> trips, Address address) {
+    public UserDTO(Long id, String firstName, String lastName, String userName, String email, String password, String confirmPassword, UserRoleNameEnum roleName, Set<Role> roles, List<TripDTO> trips, Address address, String photos, String photosImagePath) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -39,8 +41,9 @@ public class UserDTO {
         this.roles = roles;
         this.trips = trips;
         this.address = address;
+        this.photos = photos;
+        this.photosImagePath = photosImagePath;
     }
-
 
     public UserDTO() {
     }
@@ -141,5 +144,21 @@ public class UserDTO {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    public String getPhotos() {
+        return photos;
+    }
+
+    public void setPhotos(String photos) {
+        this.photos = photos;
+    }
+
+    public String getPhotosImagePath() {
+        return photosImagePath;
+    }
+
+    public void setPhotosImagePath(String photosImagePath) {
+        this.photosImagePath = photosImagePath;
     }
 }

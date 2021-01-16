@@ -1,5 +1,6 @@
 package com.travel_agency.model.hotel;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.travel_agency.model.destination.Destination;
 import com.travel_agency.model.trip.Trip;
 import lombok.AllArgsConstructor;
@@ -34,6 +35,7 @@ public class Hotel {
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name="destination_id")
+    @JsonIgnore
     private Destination destination;
 
     @ManyToMany(fetch = FetchType.EAGER,
@@ -41,6 +43,7 @@ public class Hotel {
     @JoinTable(name = "hotel_trip",
             joinColumns = @JoinColumn(name = "hotel_id"),
             inverseJoinColumns = @JoinColumn(name = "trip_id"))
+    @JsonIgnore
     private List<Trip> trips = new ArrayList<>();
 
     public Hotel(Long id, @NotEmpty String name, HotelStandardEnum standard, String location, String description, Destination destination, List<Trip> trips) {
