@@ -3,6 +3,7 @@ package com.travel_agency.model.destination;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.travel_agency.model.hotel.Hotel;
 import com.travel_agency.model.trip.Trip;
+import com.travel_agency.weather_checker.WeatherTemplate;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -49,6 +50,8 @@ public class Destination {
     @LazyCollection(LazyCollectionOption.FALSE)
     @JsonIgnore
     private List<Trip> trips = new ArrayList<>();
+
+    private WeatherTemplate weatherTemplate;
 
     public Destination(Long id, @NotEmpty String continent, @NotEmpty String country, @NotEmpty String city, @NotEmpty String airport, List<Hotel> hotels, List<Trip> trips) {
         this.id = id;
@@ -117,5 +120,13 @@ public class Destination {
 
     public void setTrips(List<Trip> trips) {
         this.trips = trips;
+    }
+
+    public WeatherTemplate getWeatherTemplate() {
+        return weatherTemplate;
+    }
+
+    public void setWeatherTemplate(WeatherTemplate weatherTemplate) {
+        this.weatherTemplate = weatherTemplate;
     }
 }

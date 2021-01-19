@@ -6,6 +6,7 @@ import com.travel_agency.model.trip.TripAlimentationEnum;
 import com.travel_agency.model.trip.TripStatusEnum;
 import com.travel_agency.model.trip.TripTypeEnum;
 import com.travel_agency.model.user.User;
+import com.travel_agency.weather_checker.WeatherTemplate;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -41,6 +42,9 @@ public class TripDTO {
     private List<Hotel> hotels = new ArrayList<>();
 
     private Integer counter;
+
+    private WeatherTemplate weatherTemplate;
+
 
 
     public Long getId() {
@@ -155,4 +159,19 @@ public class TripDTO {
         this.hotels = hotels;
     }
 
+    public Integer getCounter() {
+        return counter;
+    }
+
+    public void setCounter(Integer counter) {
+        this.counter = counter;
+    }
+
+    public WeatherTemplate getWeatherTemplate() {
+        return weatherTemplate;
+    }
+
+    public void setWeatherTemplate(WeatherTemplate weatherTemplate) {
+        this.weatherTemplate = weatherTemplate;
+    }
 }

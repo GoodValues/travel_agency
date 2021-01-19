@@ -1,12 +1,29 @@
 package com.travel_agency.weather_checker;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.io.Serializable;
+import java.util.List;
 
 public class WeatherTemplate implements Serializable {
 
-    private String city;
-    private String country;
-    private String temp;
-    private String humidity;
-    private String pressure;
+
+    private List<Main> main;
+    private List<Weather> weather;
+
+    public List<Main> getMain() {
+        return main;
+    }
+
+    public void setMain(List<Main> main) {
+        this.main = main;
+    }
+
+    public List<Weather> getWeather() {
+        return weather;
+    }
+
+    public void setWeather(List<Weather> weather) {
+        this.weather = weather;
+    }
 }
