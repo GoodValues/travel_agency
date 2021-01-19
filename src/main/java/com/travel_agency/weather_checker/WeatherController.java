@@ -16,13 +16,13 @@ public class WeatherController {
 
 
     @GetMapping(value = "/cityId")
-    public Weather getWeatherByCityId(@RequestParam("cityId") String cityId){
+    public WeatherTemplate getWeatherByCityId(@RequestParam("cityId") String cityId){
         return weatherDataService.getDataByCityId(cityId);
     }
 
     @GetMapping(value = "/cityName")
-    public Weather getWeatherByCityName(@RequestParam("q") String cityName, @RequestParam("cnt") String numberOfDaysForecast){
-        return weatherDataService.getDataByCityName(cityName, numberOfDaysForecast);
+    public WeatherTemplate getWeatherByCityName(@RequestParam("q") String cityName){
+        return weatherDataService.getDataByCityName(cityName);
     }
 
 }

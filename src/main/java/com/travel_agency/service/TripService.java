@@ -5,6 +5,7 @@ import com.travel_agency.mapper.TripMapper;
 import com.travel_agency.model.trip.Trip;
 import com.travel_agency.repository.TripRepository;
 import com.travel_agency.repository.UserRepository;
+import com.travel_agency.weather_checker.WeatherDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,18 +22,22 @@ public class TripService {
     TripRepository tripRepository;
     UserRepository userRepository;
     private Map<Long, Integer> map = new HashMap<>();
+    WeatherDataService weatherDataService;
 
     @Autowired
-    public TripService(TripRepository tripRepository, UserRepository userRepository) {
+    public TripService(TripRepository tripRepository, UserRepository userRepository, WeatherDataService weatherDataService) {
         this.tripRepository = tripRepository;
         this.userRepository = userRepository;
+        this.weatherDataService = weatherDataService;
     }
 
     public List<TripDTO> getAllTrips() {
         List<Trip> trips = tripRepository.findAll();
         List<TripDTO> result = new ArrayList<>();
-        for (Trip trip : trips)
+        for (Trip trip : trips) {
+            trip.getDestination().setWeatherTemplate(weatherDataService.getDataByCityName(trip.getDestination().getCity()));
             result.add(TripMapper.INSTANCE.tripToDto(trip));
+        }
         return result;
     }
 
@@ -41,7 +46,7 @@ public class TripService {
         setCounterValue(id);
         Optional<Trip> trip = tripRepository.findById(id);
 
-        BigDecimal tripPriceAdult = trip.orElseThrow(() -> new NullPointerException("No trip with such id")).getPriceForAdult();
+        trip.orElse(null).getDestination().setWeatherTemplate(weatherDataService.getDataByCityName(trip.orElse(null).getDestination().getCity()));
 
         return trip.map(TripMapper.INSTANCE::tripToDto).orElse(null);
     }
@@ -49,8 +54,10 @@ public class TripService {
     public List<TripDTO> getTripsForUser(Long userId) {
         List<Trip> trips = userRepository.findById(userId).orElseThrow(() -> new NullPointerException("There is no trips for user with given id")).getTrips();
         List<TripDTO> result = new ArrayList<>();
-        for (Trip trip : trips)
+        for (Trip trip : trips) {
+            trip.getDestination().setWeatherTemplate(weatherDataService.getDataByCityName(trip.getDestination().getCity()));
             result.add(TripMapper.INSTANCE.tripToDto(trip));
+        }
         return result;
     }
 
