@@ -1,24 +1,25 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE HTML>
 <html lang="pl" xmlns:th="http://www.thymeleaf.org">
-
-<html>
 <head>
     <meta charset="utf-8"/>
-    <title>Main Page</title>
-    <meta name="description" content="Stworze dla Ciebie wyjatkowa strone www! Zartudnij programiste webowego itp itd......."/>
-    <meta name="keywords" content="zamow, strone, tworzenie, www, progrmiasta, portfolio"/>
+    <title>MainPage</title>
+    <meta name="description" content="Najlepsza agencja podróżnicza"/>
+    <meta name="keywords" content="spędź z nami super wakacje"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <link rel="stylesheet" href="style.css" type="text/css"/>
-    <link rel="stylesheet" href="css/fontello.css" type="text/css"/>
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{css/style.css}" type="text/css"/>
+    <link rel="stylesheet" href="../static/css/fontello.css" th:href="@{css/fontello.css}" type="text/css"/>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100&family=Lato:wght@100&display=swap" rel="stylesheet">
 
+
+
 </head>
+
 <body>
 
-<h1> Witaj: ${userName} </h1>
-<h2>Data Twoich odwiedzin: ${dateTime}</h2>
-<h2>Witryna została odwiedzona ${visitCount} razy! </h2>
+<!--<h1> Witaj: ${userName} </h1>-->
+<!--<h2>Data Twoich odwiedzin: ${dateTime}</h2>-->
+<!--<h2>Witryna została odwiedzona ${visitCount} razy! </h2>-->
 
 <div id="container">
     <div id="topbar">
@@ -63,57 +64,47 @@
 
     <div id="strip"></div>
 
-    <div id="menu">
-        <div class="option">Strona główna</div>
-        <div class="option">Dystrybucje</div>
-        <div class="option">Instalacja</div>
-        <div class="option">Polecenia</div>
-        <div class="option">Linus Torvalds</div>
-        <div class="option">O projekcie</div>
-        <div style="clear:both;"></div>
-    </div>
-
     <div id="search">
 
         <div id="searchWindow">
 
             <form action="#" th:action="@{|/tripSearch|}" method="post" >
-                <div id="boxTop">Znajdź wakacje marzeń!</div>
+            <div id="boxTop">Znajdź wakacje marzeń!</div>
 
-                <div class="searchText">Początek</div>
+            <div class="searchText">Początek</div>
 
-                <div class="searchBox">
+            <div class="searchBox">
 
                     <input type="datetime-local" id="start" name="start">
-                    <!--                           value="2020-02-11"-->
-                    <!--                           min="2020-01-25" max="2020-12-31">-->
+<!--                           value="2020-02-11"-->
+<!--                           min="2020-01-25" max="2020-12-31">-->
                 </div>
 
-                <div style="clear:both"></div>
+            <div style="clear:both"></div>
 
-                <div class="searchText">Koniec</div>
+            <div class="searchText">Koniec</div>
 
-                <div class="searchBox">
-                    <input type="datetime-local" id="end" name="end">
-                    <!--                       value="2020-02-11"-->
-                    <!--                       min="2020-01-25" max="2020-12-31">-->
+            <div class="searchBox">
+                <input type="datetime-local" id="end" name="end">
+<!--                       value="2020-02-11"-->
+<!--                       min="2020-01-25" max="2020-12-31">-->
 
-                </div>
+            </div>
 
-                <div style="clear:both"></div>
+            <div style="clear:both"></div>
 
-                <div class="searchText">Dokąd?</div>
-                <div class="searchBox">
-                    <select type="text" name="continent" id="continent">
-                        <option value="Europa">Europa</option>
-                        <option value="Azja">Azja</option>
-                        <option value="Ameryka Północna">Ameryka Pł</option>
-                        <option value="Ameryka Południowa">Ameryka Pd</option>
-                        <option value="Afryka">Afryka</option>
-                        <option value="Australia">Australia</option>
-                    </select></div>
+            <div class="searchText">Dokąd?</div>
+            <div class="searchBox">
+                <select type="text" name="continent" id="continent">
+                    <option value="Europa">Europa</option>
+                    <option value="Azja">Azja</option>
+                    <option value="Ameryka Północna">Ameryka Pł</option>
+                    <option value="Ameryka Południowa">Ameryka Pd</option>
+                    <option value="Afryka">Afryka</option>
+                    <option value="Australia">Australia</option>
+                </select></div>
 
-                <div style="clear:both"></div>
+            <div style="clear:both"></div>
 
 
                 <button class="button button1">Szukaj</button>
@@ -139,14 +130,14 @@
             </div>
 
             <div class="singleTrip">
-                <a href="/tripsByType?type=SUMMER" th:href="@{/tripsByType/(type=${(com.travel_agency.model.trip.TripTypeEnum).SUMMER.name()})}" class="singleTripLink">
+                <a href="#" th:href="@{/tripsByType/(type=${T(com.travel_agency.model.trip.TripTypeEnum).SUMMER.name()})}" class="singleTripLink">
                     <img src="img/summer.jpg">
                     <div class="tripSignature">Wakacyjna</div></a>
             </div>
 
 
             <div class="singleTrip">
-                <a href="#" th:href="@{/tripsByType/(type=${(com.travel_agency.model.trip.TripTypeEnum).WINTER.name()})}" class="singleTripLink">
+                <a href="#" th:href="@{/tripsByType/(type=${T(com.travel_agency.model.trip.TripTypeEnum).WINTER.name()})}" class="singleTripLink">
                     <img src="img/winter.jpg">
                     <div class="tripSignature">
                         Zimowa</div></a>
@@ -154,7 +145,7 @@
 
 
             <div class="singleTrip">
-                <a href="#" th:href="@{/tripsByType/(type=${(com.travel_agency.model.trip.TripTypeEnum).ROUND_TRIP.name()})}" class="singleTripLink">
+                <a href="#" th:href="@{/tripsByType/(type=${T(com.travel_agency.model.trip.TripTypeEnum).ROUND_TRIP.name()})}" class="singleTripLink">
                     <img src="img/round.jpg">
                     <div class="tripSignature">
                         Objazdowa</div></a>
@@ -162,10 +153,10 @@
 
 
             <div class="lastTrip">
-                <a href="#" th:href="@{/tripsByType/(type=${(com.travel_agency.model.trip.TripTypeEnum).LAST_MINUTE.name()})}" class="singleTripLink">
-                    <img src="img/lastMinute.jpg">
-                    <div class="tripSignature">
-                        Last minute</div></a>
+                <a href="#" th:href="@{/tripsByType/(type=${T(com.travel_agency.model.trip.TripTypeEnum).LAST_MINUTE.name()})}" class="singleTripLink">
+                <img src="img/lastMinute.jpg">
+                <div class="tripSignature">
+                    Last minute</div></a>
             </div>
 
             <div style="clear:both"></div>
@@ -181,13 +172,13 @@
         </div>
 
 
-        <!--        <div class="singleFoodTrip" style="sociallink" >-->
-        <!--&lt;!&ndash;            th:each="alimentationType : ${alimentationTypes}" Pamiętać zeby przerobic na petle!!!&ndash;&gt;-->
-        <!--            <a href="#" th:href="@{/tripsByAlimentation/(alimentation=${(com.travel_agency.model.trip.TripAlimentationEnum).AI.name()})}"  class="singleFoodTripLink">-->
-        <!--                AI-->
-        <!--                <div class="tripSignature">-->
-        <!--                    All Inclusive</div></a>-->
-        <!--        </div>-->
+<!--        <div class="singleFoodTrip" style="sociallink" >-->
+<!--&lt;!&ndash;            th:each="alimentationType : ${alimentationTypes}" Pamiętać zeby przerobic na petle!!!&ndash;&gt;-->
+<!--            <a href="#" th:href="@{/tripsByAlimentation/(alimentation=${T(com.travel_agency.model.trip.TripAlimentationEnum).AI.name()})}"  class="singleFoodTripLink">-->
+<!--                AI-->
+<!--                <div class="tripSignature">-->
+<!--                    All Inclusive</div></a>-->
+<!--        </div>-->
         <div class="singleFoodTrip" style="sociallink"  th:each="alimentationType : ${alimentationTypes}" >
             <!--            Pamiętać zeby przerobic na petle!!!-->
             <a href="#" th:href="@{|/tripsByAlimentation/${alimentationType.name()}|}"  class="singleFoodTripLink" th:text="${alimentationType.name()}">
@@ -197,35 +188,35 @@
         </div>
 
 
-        <!--        <div class="singleFoodTrip">-->
-        <!--            <a href="#" th:href="@{/tripsByAlimentation/(alimentation=${(com.travel_agency.model.trip.TripAlimentationEnum).BB.name()})}"  class="singleFoodTripLink">-->
-        <!--                BB-->
-        <!--                <div class="tripSignature">Bed_Breakfast</div></a>-->
-        <!--        </div>-->
+<!--        <div class="singleFoodTrip">-->
+<!--            <a href="#" th:href="@{/tripsByAlimentation/(alimentation=${T(com.travel_agency.model.trip.TripAlimentationEnum).BB.name()})}"  class="singleFoodTripLink">-->
+<!--                BB-->
+<!--                <div class="tripSignature">Bed_Breakfast</div></a>-->
+<!--        </div>-->
 
 
-        <!--        <div class="singleFoodTrip">-->
-        <!--            <a href="#" th:href="@{/tripsByAlimentation/(alimentation=${(com.travel_agency.model.trip.TripAlimentationEnum).HB.name()})}"  class="singleFoodTripLink">-->
-        <!--                HB-->
-        <!--                <div class="tripSignature">-->
-        <!--                    Half Board</div></a>-->
-        <!--        </div>-->
+<!--        <div class="singleFoodTrip">-->
+<!--            <a href="#" th:href="@{/tripsByAlimentation/(alimentation=${T(com.travel_agency.model.trip.TripAlimentationEnum).HB.name()})}"  class="singleFoodTripLink">-->
+<!--                HB-->
+<!--                <div class="tripSignature">-->
+<!--                    Half Board</div></a>-->
+<!--        </div>-->
 
-        <!--        <div class="singleFoodTrip">-->
-        <!--            <a href="#" th:href="@{/tripsByAlimentation/(alimentation=${(com.travel_agency.model.trip.TripAlimentationEnum).FB.name()})}"  class="singleFoodTripLink">-->
-        <!--               FB-->
-        <!--                <div class="tripSignature">-->
-        <!--                    Half Board</div></a>-->
-        <!--        </div>-->
+<!--        <div class="singleFoodTrip">-->
+<!--            <a href="#" th:href="@{/tripsByAlimentation/(alimentation=${T(com.travel_agency.model.trip.TripAlimentationEnum).FB.name()})}"  class="singleFoodTripLink">-->
+<!--               FB-->
+<!--                <div class="tripSignature">-->
+<!--                    Half Board</div></a>-->
+<!--        </div>-->
 
 
 
-        <!--        <div class="lastFoodTrip">-->
-        <!--            <a href="#" th:href="@{/tripsByAlimentation/(alimentation=${(com.travel_agency.model.trip.TripAlimentationEnum).SC.name()})}"  class="singleFoodTripLink">-->
-        <!--                SC-->
-        <!--                <div class="tripSignature">-->
-        <!--                    Full Board</div></a>-->
-        <!--        </div>-->
+<!--        <div class="lastFoodTrip">-->
+<!--            <a href="#" th:href="@{/tripsByAlimentation/(alimentation=${T(com.travel_agency.model.trip.TripAlimentationEnum).SC.name()})}"  class="singleFoodTripLink">-->
+<!--                SC-->
+<!--                <div class="tripSignature">-->
+<!--                    Full Board</div></a>-->
+<!--        </div>-->
 
         <div style="clear:both"></div>
     </div>
@@ -397,5 +388,8 @@
 
 </div>
 
+
+
 </body>
+
 </html>

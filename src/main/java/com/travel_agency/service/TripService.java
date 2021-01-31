@@ -3,18 +3,25 @@ package com.travel_agency.service;
 import com.travel_agency.dto.TripDTO;
 import com.travel_agency.mapper.TripMapper;
 import com.travel_agency.model.trip.Trip;
+import com.travel_agency.model.trip.TripAlimentationEnum;
+import com.travel_agency.model.trip.TripStatusEnum;
+import com.travel_agency.model.trip.TripTypeEnum;
 import com.travel_agency.repository.TripRepository;
 import com.travel_agency.repository.UserRepository;
 import com.travel_agency.weather_checker.WeatherDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class TripService {
@@ -89,6 +96,20 @@ public class TripService {
 
     public Integer getCounterForTripWithId(Long id) {
         return tripRepository.findById(id).get().getCounter();
+    }
+
+    public List<TripDTO> getTripByTripType(TripTypeEnum tripTypeEnum) {
+        return tripRepository.findAllByTripType(tripTypeEnum)
+                .orElseThrow(NoSuchElementException::new)
+                .stream()
+                .map(TripMapper.INSTANCE::tripToDto)
+                .collect(Collectors.toList());
+    }
+
+    public void setAttributesForMainPage(Model model){
+        model.addAttribute("trips", getAllTrips());
+        model.addAttribute("collects", Arrays.stream(TripStatusEnum.values()).collect(Collectors.toList()));
+        model.addAttribute("alimentationTypes", Arrays.stream(TripAlimentationEnum.values()).collect(Collectors.toList()));
     }
 
 

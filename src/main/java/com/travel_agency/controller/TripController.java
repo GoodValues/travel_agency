@@ -1,11 +1,14 @@
 package com.travel_agency.controller;
 
 import com.travel_agency.dto.TripDTO;
+import com.travel_agency.model.trip.TripTypeEnum;
 import com.travel_agency.service.TripService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
@@ -55,6 +58,15 @@ public class TripController {
     @GetMapping(value="/counter/trip/{id}", produces = "application/json")
     Integer getCounterForTripWithId(@PathVariable Long id) {
         return tripService.getCounterForTripWithId(id);
+    }
+
+    @GetMapping("/tripsByType")
+    public String getTripByType(@RequestParam TripTypeEnum type, Model model) {
+        List<TripDTO> tripsByTripType = tripService.getTripByTripType(type);
+        model.addAttribute("tripsByTypes", tripsByTripType);
+        model.addAttribute("tripType", type.name());
+        tripService.setAttributesForMainPage(model);
+        return "tripsByType";
     }
 
 }

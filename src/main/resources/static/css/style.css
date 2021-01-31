@@ -12,27 +12,27 @@ body{
 	
 }
 #topbar{
-	width:1600px;
+	width:1700px;
 }
 
 #login{
 	float:left;
-	margin-left:100px;
-	width:700px;
+	margin-left:80px;
+	width:680px;
 
 }
 
 
 #logo{
 	
-	font-size:120px;
+	font-size:110px;
 	text-align:center;
 	float:left;
 	margin-top:auto;
 	height:142px;
-	text-decoration:
+	text-decoration:none;
 	font-weight: 900;
-	margin-left:50px;
+
 }
 
 .loginType{
@@ -232,12 +232,14 @@ a.singleTripLink{
 }
 
 .tripsFood{
-	margin-top:50px;
-	margin-left:350px;
-	width:950px;
+	margin-top:100px;
+
+	width:1300px;
 	height:250px;
-	margin-bottom:50px;
-	
+	margin-bottom:100px;
+
+	margin-right:250px;
+
 }
 .singleFoodTrip{
 	float:left;
@@ -245,6 +247,7 @@ a.singleTripLink{
 	width:180px;
 	background-color:#808080;
 	margin-right:50px;
+
 	font-weight:700;
 	font-size:100px;
 	padding:10px;
@@ -281,8 +284,8 @@ a.singleFoodTripLink{
 
 
 .tripsFood{
-	margin-left:26
-	0px;
+	margin-left:26px;
+
 }
 td {
 
