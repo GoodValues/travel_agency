@@ -1,0 +1,186 @@
+<!DOCTYPE HTML>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>Wycieczka</title>
+    <meta name="description" content="Najlepsza agencja podróżnicza"/>
+    <meta name="keywords" content="spędź z nami super wakacje"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <link rel="stylesheet" href="../static/css/style2.css" th:href="@{css/style2.css}" type="text/css"/>
+    <link rel="stylesheet" href="../static/css/fontello.css" th:href="@{css/fontello.css}" type="text/css"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100&family=Lato:wght@100&display=swap" rel="stylesheet">
+
+
+
+</head>
+
+
+<body>
+<div id="container">
+
+    <div class="topbar">
+        <div class="title"  th:text="${trip.destination.country}">Hiszpania</div>
+        <div class="subtitle" th:text="${trip.tripAlimentationEnum.description}">All inclusive</div>
+    </div>
+
+    <div class="photoBox">
+        <img src="../static/img/bt1.jpg" th:src="@{${trip.imgUrl}}">
+    </div>
+
+    <div class="infoBox">
+
+        <div class="tiles">
+
+            <div class="tile">
+
+                <div class="smallIcon">
+                    <i class="fas fa-dollar-sign"></i>
+                </div>
+
+                <div class="shortTextInfo" th:text="|Cena dorosły: ${trip.priceForAdult}|">
+                    Cena dorosły: 600 zł
+                </div>
+
+                <div style="clear:both"></div>
+
+            </div>
+
+            <div class="tile">
+
+                <div class="smallIcon">
+                    <i class="fas fa-dollar-sign"></i>
+                </div>
+
+                <div class="shortTextInfo" th:text="|Cena dziecko: ${trip.priceForChild}|">
+                    Cena dziecko: 300 zł
+                </div>
+
+                <div style="clear:both"></div>
+
+            </div>
+
+            <div style="clear:both"></div>
+
+        </div>
+
+        <div class="infoBar">
+
+            <div class="infoIcon">
+                <i class="far fa-calendar-times"></i>
+            </div>
+
+            <div class="infoText">
+
+                <div class="textLine" th:text="|Data rozpoczęcia: ${trip.dateFrom}|">
+                    Początek wycieczki: 02.02.2021
+                </div>
+
+                <div class="textLine" th:text="|Data zakończenia: ${trip.dateTo}|">
+                    Koniec wycieczki: 20.02.2021
+                </div>
+
+                <div class="textLine" th:text="|Czas trwania: ${trip.duration.toDays()}|">
+<!--                    poprawic wyswietlanie czasu trwania wycieczki-->
+                    Czas trwania: 10dni
+                </div>
+
+            </div>
+
+            <div style="clear:both"></div>
+
+        </div>
+
+        <div class="infoBar">
+
+            <div class="infoIcon">
+                <i class="fas fa-crosshairs"></i>
+            </div>
+
+            <div class="infoText">
+
+                <div class="textLine" th:text="|Kontynent: ${trip.destination.continent}|">
+                    Kontynent: Azja
+                </div>
+
+                <div class="textLine" th:text="|Kraj: ${trip.destination.country}|">
+                    Kraj: Tajlanda
+                </div>
+
+                <div class="textLine" th:text="|Miasto: ${trip.destination.city}|">
+                    Miasto: Bangkok
+                </div>
+
+            </div>
+            <div style="clear:both"></div>
+
+        </div>
+
+        <div class="infoBar" th:each="hotel: ${hotelsForTrip}">
+
+            <div class="infoIcon">
+                <i class="fas fa-hotel"></i>
+            </div>
+
+            <div class="infoText">
+
+                <div class="textLine" th:text="|Hotel: ${hotel.name}|">
+                    Hotel: Marriot
+                </div>
+
+                <div class="textLine" th:text="|Standard hotelu: ${hotel.standard.desciprtion}|">
+                    Standard: 5 - gwiazdkowy
+                </div>
+
+                <div class="textLine" th:text="|Opis hotelu: ${hotel.description}|">
+                    Opis hotelu
+                </div>
+
+            </div>
+            <div style="clear:both"></div>
+
+        </div>
+
+        <div class="infoBar">
+
+            <div class="infoIcon">
+                <i class="fas fa-suitcase-rolling"></i>
+            </div>
+
+            <div class="infoText">
+
+                <div class="textLine" th:text="|Typ wycieczki: ${trip.tripType.description}|">
+                    Typ wycieczki: Wakacyjna
+                </div>
+
+                <div class="textLine" th:text="|Standard: ${trip.tripAlimentationEnum.description}|">
+                    Standard wyżywienia: All inclusive
+                </div>
+
+                <div class="textLine" th:text="|Opis wycieczki: ${trip.description}|">
+                    Opis wycieczki
+                </div>
+
+                <div style="clear:both"></div>
+
+            </div>
+
+        </div>
+
+
+
+    </div>
+    <div>
+        <a href="#" th:href="@{/}">
+            <button class="button button1">Powrót do strony głównej</button>
+        </a>
+    </div>
+
+</div>
+
+
+
+
+
+</body>
+</html>

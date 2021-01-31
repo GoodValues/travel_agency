@@ -45,6 +45,8 @@ public class TripDTO {
 
     private WeatherTemplate weatherTemplate;
 
+    private String imgUrl;
+
 
 
     public Long getId() {
@@ -173,5 +175,13 @@ public class TripDTO {
 
     public void setWeatherTemplate(WeatherTemplate weatherTemplate) {
         this.weatherTemplate = weatherTemplate;
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 }

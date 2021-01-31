@@ -85,6 +85,9 @@ public class Trip {
 
     private WeatherTemplate weatherTemplate;
 
+    @Column(name = "img_url")
+    private String imgUrl;
+
 
     public Long getId() {
         return id;
@@ -212,5 +215,13 @@ public class Trip {
 
     public void setWeatherTemplate(WeatherTemplate weatherTemplate) {
         this.weatherTemplate = weatherTemplate;
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 }
