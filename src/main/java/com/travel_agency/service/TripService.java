@@ -1,11 +1,15 @@
 package com.travel_agency.service;
 
+import com.travel_agency.dto.HotelDTO;
 import com.travel_agency.dto.TripDTO;
+import com.travel_agency.mapper.HotelMapper;
 import com.travel_agency.mapper.TripMapper;
+import com.travel_agency.model.destination.Destination;
 import com.travel_agency.model.trip.Trip;
 import com.travel_agency.model.trip.TripAlimentationEnum;
 import com.travel_agency.model.trip.TripStatusEnum;
 import com.travel_agency.model.trip.TripTypeEnum;
+import com.travel_agency.repository.DestinationRepository;
 import com.travel_agency.repository.TripRepository;
 import com.travel_agency.repository.UserRepository;
 import com.travel_agency.weather_checker.WeatherDataService;
@@ -14,13 +18,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.NoSuchElementException;
-import java.util.Optional;
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -30,12 +30,15 @@ public class TripService {
     UserRepository userRepository;
     private Map<Long, Integer> map = new HashMap<>();
     WeatherDataService weatherDataService;
+    DestinationRepository destinationRepository;
 
     @Autowired
-    public TripService(TripRepository tripRepository, UserRepository userRepository, WeatherDataService weatherDataService) {
+    public TripService(TripRepository tripRepository, UserRepository userRepository,
+                       WeatherDataService weatherDataService, DestinationRepository destinationRepository) {
         this.tripRepository = tripRepository;
         this.userRepository = userRepository;
         this.weatherDataService = weatherDataService;
+        this.destinationRepository = destinationRepository;
     }
 
     public List<TripDTO> getAllTrips() {
@@ -55,7 +58,11 @@ public class TripService {
 
         trip.orElse(null).getDestination().setWeatherTemplate(weatherDataService.getDataByCityName(trip.orElse(null).getDestination().getCity()));
 
-        return trip.map(TripMapper.INSTANCE::tripToDto).orElse(null);
+
+        TripDTO tripDTO = trip.map(TripMapper.INSTANCE::tripToDto).orElse(null);
+        tripDTO.setDuration(Duration.between(tripDTO.getDateFrom(), tripDTO.getDateTo()));
+
+        return tripDTO;
     }
 
     public List<TripDTO> getTripsForUser(Long userId) {
@@ -106,11 +113,72 @@ public class TripService {
                 .collect(Collectors.toList());
     }
 
+    public List<TripDTO> getTripByAlimentation(TripAlimentationEnum alimentation) {
+        return tripRepository.findAllByTripAlimentationEnum(alimentation)
+                .orElseThrow(NoSuchElementException::new)
+                .stream()
+                .map(TripMapper.INSTANCE::tripToDto)
+                .collect(Collectors.toList());
+    }
+
+    public List<HotelDTO> getHotelsForTripById(Long id) {
+        Trip trip = tripRepository.findById(id).orElseThrow(NoSuchElementException::new);
+
+        return trip.getHotels()
+                .stream()
+                .map(HotelMapper.INSTANCE::hotelDto)
+                .collect(Collectors.toList());
+    }
+
+    public List<TripDTO> getTripBySearchBox(LocalDateTime dateFrom, LocalDateTime dateTo, String continent) {
+
+        return tripRepository.findAllByDateFromAfterAndDateToBeforeAndDestination_Continent(dateFrom, dateTo, continent)
+                .orElseThrow(NoSuchElementException::new)
+                .stream()
+                .map(TripMapper.INSTANCE::tripToDto)
+                .collect(Collectors.toList());
+    }
+
+    public TripDTO createAndSaveNewTrip(LocalDateTime dateFrom, LocalDateTime dateTo, BigDecimal priceAdult, BigDecimal priceChild,
+                                        TripTypeEnum type, TripAlimentationEnum alimentation, String description, Integer limit, String url,
+                                        String continent, String country, String city, String airport) {
+
+        Destination destination = new Destination();
+        destination.setContinent(continent);
+        destination.setCountry(country);
+        destination.setCity(city);
+        destination.setAirport(airport);
+        destinationRepository.save(destination);
+
+        Trip trip = new Trip();
+        trip.setDateFrom(dateFrom);
+        trip.setDateTo(dateTo);
+        trip.setPriceForAdult(priceAdult);
+        trip.setPriceForChild(priceChild);
+        trip.setTripType(type);
+        trip.setTripAlimentationEnum(alimentation);
+        trip.setDescription(description);
+        trip.setStatus(TripStatusEnum.ACTIVE);
+        trip.setPeopleLimit(limit);
+        trip.setDestination(destination);
+        trip.setImgUrl(url);
+        trip.setCounter(0);
+        trip.setDuration(Duration.between(dateFrom,dateTo));
+
+        tripRepository.save(trip);
+
+        return TripMapper.INSTANCE.tripToDto(trip);
+    }
+
+
+
     public void setAttributesForMainPage(Model model){
         model.addAttribute("trips", getAllTrips());
         model.addAttribute("collects", Arrays.stream(TripStatusEnum.values()).collect(Collectors.toList()));
         model.addAttribute("alimentationTypes", Arrays.stream(TripAlimentationEnum.values()).collect(Collectors.toList()));
     }
+
+
 
 
 }
